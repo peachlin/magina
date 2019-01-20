@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.MetricDataMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.MetricData">
+    <id column="collector_id" property="collectorId" jdbcType="VARCHAR"/>
+    <result column="metric_id" property="metricId" jdbcType="VARCHAR"/>
+    <result column="value" property="value" jdbcType="DOUBLE"/>
+    <result column="collect_time" property="collectTime" jdbcType="TIMESTAMP"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    collector_id, metric_id, value, collect_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from metric
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from metric
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.MetricData">
+    insert into metric (collector_id, metric_id, value, collect_time)
+    values (#{collectorId,jdbcType=VARCHAR}, #{metricId,jdbcType=VARCHAR}, #{value,jdbcType=DOUBLE},
+    #{collectTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.MetricData">
+    insert into metric
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectorId != null">
+        collector_id,
+      </if>
+      <if test="metricId != null">
+        metric_id,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="collectTime != null">
+        collect_time
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectorId != null">
+        #{collectorId,jdbcType=VARCHAR},
+      </if>
+      <if test="metricId != null">
+        #{metricId,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=DOUBLE},
+      </if>
+      <if test="collectTime != null">
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.MetricData">
+    update metric
+    <set>
+      <if test="collectorId != null">
+        collector_id = #{collectorId,jdbcType=VARCHAR},
+      </if>
+      <if test="metricId != null">
+        metric_id = #{metricId,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="collectTime != null">
+        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.MetricData">
+    update metric
+    set collector_id = #{collectorId,jdbcType=VARCHAR},
+    metric_id = #{metricId,jdbcType=VARCHAR},
+    value = #{value,jdbcType=VARCHAR},
+    collect_time = #{collectTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

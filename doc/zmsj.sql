@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 08/06/2019 23:18:48
+ Date: 20/01/2019 10:36:15
 */
 
 SET NAMES utf8mb4;
@@ -75,6 +75,34 @@ CREATE TABLE `collector`  (
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for metric
+-- ----------------------------
+DROP TABLE IF EXISTS `metric`;
+CREATE TABLE `metric`  (
+  `id` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT 'ID',
+  `type` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '指标类型',
+  `zh_name` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '指标中文名',
+  `en_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '指标英文名',
+  `unit` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '指标单位',
+  `collector_model` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '采集器型号',
+  `remark` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '备注',
+  `modify_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for metric_data
+-- ----------------------------
+DROP TABLE IF EXISTS `metric_data`;
+CREATE TABLE `metric_data`  (
+  `collector_id` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '采集器ID',
+  `metric_id` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '指标ID',
+  `value` double(255, 0) NOT NULL COMMENT '采集值',
+  `collect_time` datetime(0) NOT NULL COMMENT '采集时间',
+  PRIMARY KEY (`collector_id`, `metric_id`, `collect_time`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for station
 -- ----------------------------
 DROP TABLE IF EXISTS `station`;
@@ -84,6 +112,7 @@ CREATE TABLE `station`  (
   `name` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '名称',
   `longitude` double(255, 0) NULL DEFAULT NULL COMMENT '经度',
   `latitude` double(255, 0) NULL DEFAULT NULL COMMENT '纬度',
+  `elevation` int(8) NULL DEFAULT NULL COMMENT '海拔',
   `area_id` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '所属区域ID',
   `status` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '状态',
   `location` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '位置',
