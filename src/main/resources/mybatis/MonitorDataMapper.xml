@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.MonitorDataMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.MonitorData">
+    <id column="id" property="id" jdbcType="INTEGER"/>
+    <result column="area_id" property="areaId" jdbcType="INTEGER"/>
+    <result column="area_name" property="areaName" jdbcType="VARCHAR"/>
+    <result column="monitor_device_name" property="monitorDeviceName" jdbcType="VARCHAR"/>
+    <result column="monitor_device_id" property="monitorDeviceId" jdbcType="INTEGER"/>
+    <result column="monitor_date" property="monitorDate" jdbcType="TIMESTAMP"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, area_id, area_name, monitor_device_name, monitor_device_id, monitor_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
+    from monitor_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from monitor_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.MonitorData">
+    insert into monitor_data (id, area_id, area_name,
+    monitor_device_name, monitor_device_id, monitor_date
+    )
+    values (#{id,jdbcType=INTEGER}, #{areaId,jdbcType=INTEGER}, #{areaName,jdbcType=VARCHAR},
+    #{monitorDeviceName,jdbcType=VARCHAR}, #{monitorDeviceId,jdbcType=INTEGER},
+    #{monitorDate,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.MonitorData">
+    insert into monitor_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="monitorDeviceName != null">
+        monitor_device_name,
+      </if>
+      <if test="monitorDeviceId != null">
+        monitor_device_id,
+      </if>
+      <if test="monitorDate != null">
+        monitor_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorDeviceName != null">
+        #{monitorDeviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorDeviceId != null">
+        #{monitorDeviceId,jdbcType=INTEGER},
+      </if>
+      <if test="monitorDate != null">
+        #{monitorDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.MonitorData">
+    update monitor_data
+    <set>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorDeviceName != null">
+        monitor_device_name = #{monitorDeviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorDeviceId != null">
+        monitor_device_id = #{monitorDeviceId,jdbcType=INTEGER},
+      </if>
+      <if test="monitorDate != null">
+        monitor_date = #{monitorDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.MonitorData">
+    update monitor_data
+    set area_id = #{areaId,jdbcType=INTEGER},
+    area_name = #{areaName,jdbcType=VARCHAR},
+    monitor_device_name = #{monitorDeviceName,jdbcType=VARCHAR},
+    monitor_device_id = #{monitorDeviceId,jdbcType=INTEGER},
+    monitor_date = #{monitorDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
