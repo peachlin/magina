@@ -11,8 +11,8 @@
       <property name="suppressAllComments" value="true"/>
     </commentGenerator>
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-      connectionURL="jdbc:mysql://139.129.163.156:3306/zy_ecology?useUnicode=true&amp;characterEncoding=UTF-8"
-      userId="ziyouxing" password="ziyouxing"/>
+      connectionURL="jdbc:mysql://47.101.177.31:3306/zmsj?useUnicode=true&amp;characterEncoding=UTF-8"
+      userId="root" password="123456"/>
     <javaModelGenerator targetPackage="com.zmsj.magina.model"
       targetProject="C:\Users\wangk\Documents\code\mine\magina\src\main\java">
       <property name="enableSubPackages" value="false"/>
@@ -23,7 +23,7 @@
     <javaClientGenerator targetPackage="com.zmsj.magina.dao"
       targetProject="C:\Users\wangk\Documents\code\mine\magina\src\main\java"
       type="XMLMAPPER"/>
-    <table schema="b_area" tableName="%"
+    <table schema="area" tableName="%"
       enableCountByExample="false" enableUpdateByExample="false"
       enableDeleteByExample="false"
       enableSelectByExample="false"/>

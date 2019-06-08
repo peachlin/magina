@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmsj.magina.dao.CollectorMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.Collector">
+    <id column="id" jdbcType="VARCHAR" property="id"/>
+    <result column="alias" jdbcType="VARCHAR" property="alias"/>
+    <result column="station_id" jdbcType="VARCHAR" property="stationId"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="model" jdbcType="VARCHAR" property="model"/>
+    <result column="location" jdbcType="VARCHAR" property="location"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
+    <result column="charge_name" jdbcType="VARCHAR" property="chargeName"/>
+    <result column="charge_tel" jdbcType="VARCHAR" property="chargeTel"/>
+    <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, alias, station_id, name, model, location, status, charge_name, charge_tel, remark,
+    modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from collector
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="listByStationIds" resultType="com.zmsj.magina.model.Collector">
+    select
+    <include refid="Base_Column_List"/>
+    from collector
+    <where>
+      <if test="stationIds != null">
+        and monitoringStationId in
+        <foreach collection="stationIds" index="index" item="item" open="(" separator="," close=")">
+          #{item,jdbcType=INTEGER}
+        </foreach>
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from collector
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.Collector">
+    insert into collector (id, alias, station_id,
+    name, model, location,
+    status, charge_name, charge_tel,
+    remark, modify_time)
+    values (#{id,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{stationId,jdbcType=VARCHAR},
+    #{name,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR},
+    #{status,jdbcType=VARCHAR}, #{chargeName,jdbcType=VARCHAR}, #{chargeTel,jdbcType=VARCHAR},
+    #{remark,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.Collector">
+    insert into collector
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="stationId != null">
+        station_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="chargeName != null">
+        charge_name,
+      </if>
+      <if test="chargeTel != null">
+        charge_tel,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null">
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeName != null">
+        #{chargeName,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeTel != null">
+        #{chargeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.Collector">
+    update collector
+    <set>
+      <if test="alias != null">
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null">
+        station_id = #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeName != null">
+        charge_name = #{chargeName,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeTel != null">
+        charge_tel = #{chargeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.Collector">
+    update collector
+    set alias = #{alias,jdbcType=VARCHAR},
+    station_id = #{stationId,jdbcType=VARCHAR},
+    name = #{name,jdbcType=VARCHAR},
+    model = #{model,jdbcType=VARCHAR},
+    location = #{location,jdbcType=VARCHAR},
+    status = #{status,jdbcType=VARCHAR},
+    charge_name = #{chargeName,jdbcType=VARCHAR},
+    charge_tel = #{chargeTel,jdbcType=VARCHAR},
+    remark = #{remark,jdbcType=VARCHAR},
+    modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

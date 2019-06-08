@@ -4,9 +4,9 @@ spring:
   application:
     name: epic-cp9
   datasource:
-    url: "jdbc:mysql://139.129.163.156:3306/zy_ecology?useUnicode=true&characterEncoding=UTF-8"
-    username: ziyouxing
-    password: ziyouxing
+    url: "jdbc:mysql://47.101.177.31:3306/zmsj?useUnicode=true&characterEncoding=UTF-8"
+    username: root
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
   mapper-locations: mybatis/*.xml

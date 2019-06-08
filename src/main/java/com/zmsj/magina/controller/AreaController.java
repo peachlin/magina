@@ -1,7 +1,7 @@
 package com.zmsj.magina.controller;
 
 import com.zmsj.magina.base.Response;
-import com.zmsj.magina.model.BArea;
+import com.zmsj.magina.model.Area;
 import com.zmsj.magina.service.AreaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,7 +24,7 @@ public class AreaController {
 
   @ApiOperation(value = "获取所有区域")
   @GetMapping("/list")
-  public Response<List<BArea>> listAreas() {
+  public Response<List<Area>> listAreas() {
 
     return Response.success(areaService.listAreas());
   }

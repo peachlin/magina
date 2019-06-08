@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.MetricMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.Metric">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="type" property="type" jdbcType="VARCHAR"/>
+    <result column="zh_name" property="zhName" jdbcType="VARCHAR"/>
+    <result column="en_name" property="enName" jdbcType="VARCHAR"/>
+    <result column="unit" property="unit" jdbcType="VARCHAR"/>
+    <result column="collector_model" property="collectorModel" jdbcType="VARCHAR"/>
+    <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, zh_name, en_name, unit, collector_model, remark, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from metric
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from metric
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.Metric">
+    insert into metric (id, type, zh_name,
+    en_name, unit, collector_model,
+    remark, modify_time)
+    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{zhName,jdbcType=VARCHAR},
+    #{enName,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{collectorModel,jdbcType=VARCHAR},
+    #{remark,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.Metric">
+    insert into metric
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="zhName != null">
+        zh_name,
+      </if>
+      <if test="enName != null">
+        en_name,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="collectorModel != null">
+        collector_model,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="zhName != null">
+        #{zhName,jdbcType=VARCHAR},
+      </if>
+      <if test="enName != null">
+        #{enName,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorModel != null">
+        #{collectorModel,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.Metric">
+    update metric
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="zhName != null">
+        zh_name = #{zhName,jdbcType=VARCHAR},
+      </if>
+      <if test="enName != null">
+        en_name = #{enName,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorModel != null">
+        collector_model = #{collectorModel,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.Metric">
+    update metric
+    set type = #{type,jdbcType=VARCHAR},
+    zh_name = #{zhName,jdbcType=VARCHAR},
+    en_name = #{enName,jdbcType=VARCHAR},
+    unit = #{unit,jdbcType=VARCHAR},
+    collector_model = #{collectorModel,jdbcType=VARCHAR},
+    remark = #{remark,jdbcType=VARCHAR},
+    modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

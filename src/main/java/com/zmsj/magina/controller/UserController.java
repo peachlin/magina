@@ -1,7 +1,7 @@
 package com.zmsj.magina.controller;
 
 import com.zmsj.magina.base.Response;
-import com.zmsj.magina.model.TbUser;
+import com.zmsj.magina.model.User;
 import com.zmsj.magina.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,10 +25,10 @@ public class UserController {
 
   @ApiOperation(value = "登录")
   @GetMapping("/login")
-  public Response<TbUser> login(@RequestParam("userName") @ApiParam("用户名") String userName,
+  public Response<User> login(@RequestParam("userName") @ApiParam("用户名") String userName,
       @RequestParam("password") @ApiParam("密码") String password) {
 
-    TbUser user = userService.login(userName, password);
+    User user = userService.login(userName, password);
     if (null != user) {
       user.setPassword(null);
       return Response.success(user);

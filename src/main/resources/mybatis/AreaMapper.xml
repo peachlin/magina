@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmsj.magina.dao.AreaMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.Area">
+    <id column="id" jdbcType="VARCHAR" property="id"/>
+    <result column="alias" jdbcType="VARCHAR" property="alias"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="charge_name" jdbcType="VARCHAR" property="chargeName"/>
+    <result column="charge_tel" jdbcType="VARCHAR" property="chargeTel"/>
+    <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, alias, name, charge_name, charge_tel, remark, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from area
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultType="com.zmsj.magina.model.Area">
+    select
+    <include refid="Base_Column_List"/>
+    from area
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from area
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.Area">
+    insert into area (id, alias, name,
+    charge_name, charge_tel, remark,
+    modify_time)
+    values (#{id,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+    #{chargeName,jdbcType=VARCHAR}, #{chargeTel,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+    #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.Area">
+    insert into area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="chargeName != null">
+        charge_name,
+      </if>
+      <if test="chargeTel != null">
+        charge_tel,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeName != null">
+        #{chargeName,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeTel != null">
+        #{chargeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.Area">
+    update area
+    <set>
+      <if test="alias != null">
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeName != null">
+        charge_name = #{chargeName,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeTel != null">
+        charge_tel = #{chargeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.Area">
+    update area
+    set alias = #{alias,jdbcType=VARCHAR},
+    name = #{name,jdbcType=VARCHAR},
+    charge_name = #{chargeName,jdbcType=VARCHAR},
+    charge_tel = #{chargeTel,jdbcType=VARCHAR},
+    remark = #{remark,jdbcType=VARCHAR},
+    modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmsj.magina.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.User">
+    <id column="id" jdbcType="VARCHAR" property="id"/>
+    <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="telphone" jdbcType="VARCHAR" property="telphone"/>
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, password, name, telphone, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUserNameAndPwd" resultType="com.zmsj.magina.model.User">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.User">
+    insert into user (id, user_name, password,
+    name, telphone, modify_time
+    )
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+    #{name,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.User">
+    update user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+    password = #{password,jdbcType=VARCHAR},
+    name = #{name,jdbcType=VARCHAR},
+    telphone = #{telphone,jdbcType=VARCHAR},
+    modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
