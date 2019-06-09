@@ -21,6 +21,8 @@ public class Station {
 
   private Double latitude;
 
+  private Integer elevation;
+
   private String areaId;
 
   private String status;

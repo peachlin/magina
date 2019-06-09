@@ -8,6 +8,7 @@
     <result column="name" jdbcType="VARCHAR" property="name"/>
     <result column="longitude" jdbcType="DOUBLE" property="longitude"/>
     <result column="latitude" jdbcType="DOUBLE" property="latitude"/>
+    <result column="elevation" jdbcType="INTEGER" property="elevation"/>
     <result column="area_id" jdbcType="VARCHAR" property="areaId"/>
     <result column="status" jdbcType="VARCHAR" property="status"/>
     <result column="location" jdbcType="VARCHAR" property="location"/>
@@ -17,7 +18,8 @@
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
   </resultMap>
   <sql id="Base_Column_List">
-    id, alias, name, longitude, latitude, area_id, status, location, charge_name, charge_tel,
+    id, alias, name, longitude, latitude, elevation, area_id, status, location, charge_name,
+    charge_tel,
     remark, modify_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -38,12 +40,13 @@
   </delete>
   <insert id="insert" parameterType="com.zmsj.magina.model.Station">
     insert into station (id, alias, name,
-    longitude, latitude, area_id,
+    longitude, latitude,elevation, area_id,
     status, location, charge_name,
     charge_tel, remark, modify_time
     )
     values (#{id,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
-    #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{areaId,jdbcType=VARCHAR},
+    #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE},#{elevation,jdbcType=INTEGER},
+    #{areaId,jdbcType=VARCHAR},
     #{status,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{chargeName,jdbcType=VARCHAR},
     #{chargeTel,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}
     )
@@ -65,6 +68,9 @@
       </if>
       <if test="latitude != null">
         latitude,
+      </if>
+      <if test="elevation != null">
+        elevation,
       </if>
       <if test="areaId != null">
         area_id,
@@ -104,6 +110,9 @@
       <if test="latitude != null">
         #{latitude,jdbcType=DOUBLE},
       </if>
+      <if test="elevation != null">
+        #{elevation,jdbcType=INTEGER},
+      </if>
       <if test="areaId != null">
         #{areaId,jdbcType=VARCHAR},
       </if>
@@ -142,6 +151,9 @@
       <if test="latitude != null">
         latitude = #{latitude,jdbcType=DOUBLE},
       </if>
+      <if test="elevation != null">
+        elevation = #{elevation,jdbcType=INTEGER},
+      </if>
       <if test="areaId != null">
         area_id = #{areaId,jdbcType=VARCHAR},
       </if>
@@ -172,6 +184,7 @@
     name = #{name,jdbcType=VARCHAR},
     longitude = #{longitude,jdbcType=DOUBLE},
     latitude = #{latitude,jdbcType=DOUBLE},
+    elevation = #{elevation,jdbcType=INTEGER},
     area_id = #{areaId,jdbcType=VARCHAR},
     status = #{status,jdbcType=VARCHAR},
     location = #{location,jdbcType=VARCHAR},
