@@ -1,5 +1,6 @@
 package com.zmsj.magina.model;
 
+import com.zmsj.magina.base.MaginaUtils;
 import io.swagger.annotations.ApiModel;
 import java.util.Date;
 import lombok.Data;
@@ -21,9 +22,15 @@ public class Metric {
 
   private String unit;
 
-  private String collectorModel;
+  private String deviceId;
 
   private String remark;
 
   private Date modifyTime;
+
+  public static void main(String[] args) {
+    for (int i = 0; i < 11; i++) {
+      System.out.println(MaginaUtils.generateUUID());
+    }
+  }
 }

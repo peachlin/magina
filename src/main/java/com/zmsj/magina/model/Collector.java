@@ -19,7 +19,7 @@ public class Collector {
 
   private String name;
 
-  private String model;
+  private String deviceId;
 
   private String location;
 
