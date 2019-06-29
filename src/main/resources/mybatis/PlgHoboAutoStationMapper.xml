@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.PlgHoboAutoStationMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.PlgHoboAutoStation">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="collectorid" property="collectorid" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="collect_frequency" property="collectFrequency" jdbcType="DECIMAL"/>
+    <result column="num" property="num" jdbcType="DECIMAL"/>
+    <result column="timestamp" property="timestamp" jdbcType="TIMESTAMP"/>
+    <result column="solar_radiation" property="solarRadiation" jdbcType="DECIMAL"/>
+    <result column="par" property="par" jdbcType="DECIMAL"/>
+    <result column="water10_content" property="water10Content" jdbcType="DECIMAL"/>
+    <result column="water20_content" property="water20Content" jdbcType="DECIMAL"/>
+    <result column="water40_content" property="water40Content" jdbcType="DECIMAL"/>
+    <result column="pressure" property="pressure" jdbcType="DECIMAL"/>
+    <result column="temp" property="temp" jdbcType="DECIMAL"/>
+    <result column="rh" property="rh" jdbcType="DECIMAL"/>
+    <result column="temp_10" property="temp10" jdbcType="DECIMAL"/>
+    <result column="rain" property="rain" jdbcType="DECIMAL"/>
+    <result column="wind_direction" property="windDirection" jdbcType="DECIMAL"/>
+    <result column="wind_speed" property="windSpeed" jdbcType="DECIMAL"/>
+    <result column="gust_speed" property="gustSpeed" jdbcType="DECIMAL"/>
+    <result column="temp_20" property="temp20" jdbcType="DECIMAL"/>
+    <result column="temp_40" property="temp40" jdbcType="DECIMAL"/>
+    <result column="batt" property="batt" jdbcType="DECIMAL"/>
+    <result column="file_type" property="fileType" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collectorid, create_time, collect_frequency, num, timestamp, solar_radiation, 
+    par, water10_content, water20_content, water40_content, pressure, temp, rh, temp_10, 
+    rain, wind_direction, wind_speed, gust_speed, temp_20, temp_40, batt, file_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_hobo_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete
+    from plg_hobo_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.PlgHoboAutoStation">
+    insert into plg_hobo_auto_station (id, collectorid, create_time,
+                                       collect_frequency, num, timestamp,
+                                       solar_radiation, par, water10_content,
+                                       water20_content, water40_content, pressure,
+                                       temp, rh, temp_10, rain,
+                                       wind_direction, wind_speed, gust_speed,
+                                       temp_20, temp_40, batt,
+                                       file_type)
+    values (#{id,jdbcType=VARCHAR}, #{collectorid,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{collectFrequency,jdbcType=DECIMAL}, #{num,jdbcType=DECIMAL},
+            #{timestamp,jdbcType=TIMESTAMP},
+            #{solarRadiation,jdbcType=DECIMAL}, #{par,jdbcType=DECIMAL},
+            #{water10Content,jdbcType=DECIMAL},
+            #{water20Content,jdbcType=DECIMAL}, #{water40Content,jdbcType=DECIMAL},
+            #{pressure,jdbcType=DECIMAL},
+            #{temp,jdbcType=DECIMAL}, #{rh,jdbcType=DECIMAL}, #{temp10,jdbcType=DECIMAL},
+            #{rain,jdbcType=DECIMAL},
+            #{windDirection,jdbcType=DECIMAL}, #{windSpeed,jdbcType=DECIMAL},
+            #{gustSpeed,jdbcType=DECIMAL},
+            #{temp20,jdbcType=DECIMAL}, #{temp40,jdbcType=DECIMAL}, #{batt,jdbcType=DECIMAL},
+            #{fileType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.PlgHoboAutoStation">
+    insert into plg_hobo_auto_station
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectorid != null">
+        collectorid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="solarRadiation != null">
+        solar_radiation,
+      </if>
+      <if test="par != null">
+        par,
+      </if>
+      <if test="water10Content != null">
+        water10_content,
+      </if>
+      <if test="water20Content != null">
+        water20_content,
+      </if>
+      <if test="water40Content != null">
+        water40_content,
+      </if>
+      <if test="pressure != null">
+        pressure,
+      </if>
+      <if test="temp != null">
+        temp,
+      </if>
+      <if test="rh != null">
+        rh,
+      </if>
+      <if test="temp10 != null">
+        temp_10,
+      </if>
+      <if test="rain != null">
+        rain,
+      </if>
+      <if test="windDirection != null">
+        wind_direction,
+      </if>
+      <if test="windSpeed != null">
+        wind_speed,
+      </if>
+      <if test="gustSpeed != null">
+        gust_speed,
+      </if>
+      <if test="temp20 != null">
+        temp_20,
+      </if>
+      <if test="temp40 != null">
+        temp_40,
+      </if>
+      <if test="batt != null">
+        batt,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorid != null">
+        #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="solarRadiation != null">
+        #{solarRadiation,jdbcType=DECIMAL},
+      </if>
+      <if test="par != null">
+        #{par,jdbcType=DECIMAL},
+      </if>
+      <if test="water10Content != null">
+        #{water10Content,jdbcType=DECIMAL},
+      </if>
+      <if test="water20Content != null">
+        #{water20Content,jdbcType=DECIMAL},
+      </if>
+      <if test="water40Content != null">
+        #{water40Content,jdbcType=DECIMAL},
+      </if>
+      <if test="pressure != null">
+        #{pressure,jdbcType=DECIMAL},
+      </if>
+      <if test="temp != null">
+        #{temp,jdbcType=DECIMAL},
+      </if>
+      <if test="rh != null">
+        #{rh,jdbcType=DECIMAL},
+      </if>
+      <if test="temp10 != null">
+        #{temp10,jdbcType=DECIMAL},
+      </if>
+      <if test="rain != null">
+        #{rain,jdbcType=DECIMAL},
+      </if>
+      <if test="windDirection != null">
+        #{windDirection,jdbcType=DECIMAL},
+      </if>
+      <if test="windSpeed != null">
+        #{windSpeed,jdbcType=DECIMAL},
+      </if>
+      <if test="gustSpeed != null">
+        #{gustSpeed,jdbcType=DECIMAL},
+      </if>
+      <if test="temp20 != null">
+        #{temp20,jdbcType=DECIMAL},
+      </if>
+      <if test="temp40 != null">
+        #{temp40,jdbcType=DECIMAL},
+      </if>
+      <if test="batt != null">
+        #{batt,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.PlgHoboAutoStation">
+    update plg_hobo_auto_station
+    <set>
+      <if test="collectorid != null">
+        collectorid = #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="solarRadiation != null">
+        solar_radiation = #{solarRadiation,jdbcType=DECIMAL},
+      </if>
+      <if test="par != null">
+        par = #{par,jdbcType=DECIMAL},
+      </if>
+      <if test="water10Content != null">
+        water10_content = #{water10Content,jdbcType=DECIMAL},
+      </if>
+      <if test="water20Content != null">
+        water20_content = #{water20Content,jdbcType=DECIMAL},
+      </if>
+      <if test="water40Content != null">
+        water40_content = #{water40Content,jdbcType=DECIMAL},
+      </if>
+      <if test="pressure != null">
+        pressure = #{pressure,jdbcType=DECIMAL},
+      </if>
+      <if test="temp != null">
+        temp = #{temp,jdbcType=DECIMAL},
+      </if>
+      <if test="rh != null">
+        rh = #{rh,jdbcType=DECIMAL},
+      </if>
+      <if test="temp10 != null">
+        temp_10 = #{temp10,jdbcType=DECIMAL},
+      </if>
+      <if test="rain != null">
+        rain = #{rain,jdbcType=DECIMAL},
+      </if>
+      <if test="windDirection != null">
+        wind_direction = #{windDirection,jdbcType=DECIMAL},
+      </if>
+      <if test="windSpeed != null">
+        wind_speed = #{windSpeed,jdbcType=DECIMAL},
+      </if>
+      <if test="gustSpeed != null">
+        gust_speed = #{gustSpeed,jdbcType=DECIMAL},
+      </if>
+      <if test="temp20 != null">
+        temp_20 = #{temp20,jdbcType=DECIMAL},
+      </if>
+      <if test="temp40 != null">
+        temp_40 = #{temp40,jdbcType=DECIMAL},
+      </if>
+      <if test="batt != null">
+        batt = #{batt,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.PlgHoboAutoStation">
+    update plg_hobo_auto_station
+    set collectorid       = #{collectorid,jdbcType=VARCHAR},
+        create_time       = #{createTime,jdbcType=TIMESTAMP},
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+        num               = #{num,jdbcType=DECIMAL},
+        timestamp         = #{timestamp,jdbcType=TIMESTAMP},
+        solar_radiation   = #{solarRadiation,jdbcType=DECIMAL},
+        par               = #{par,jdbcType=DECIMAL},
+        water10_content   = #{water10Content,jdbcType=DECIMAL},
+        water20_content   = #{water20Content,jdbcType=DECIMAL},
+        water40_content   = #{water40Content,jdbcType=DECIMAL},
+        pressure          = #{pressure,jdbcType=DECIMAL},
+        temp              = #{temp,jdbcType=DECIMAL},
+        rh                = #{rh,jdbcType=DECIMAL},
+        temp_10           = #{temp10,jdbcType=DECIMAL},
+        rain              = #{rain,jdbcType=DECIMAL},
+        wind_direction    = #{windDirection,jdbcType=DECIMAL},
+        wind_speed        = #{windSpeed,jdbcType=DECIMAL},
+        gust_speed        = #{gustSpeed,jdbcType=DECIMAL},
+        temp_20           = #{temp20,jdbcType=DECIMAL},
+        temp_40           = #{temp40,jdbcType=DECIMAL},
+        batt              = #{batt,jdbcType=DECIMAL},
+        file_type         = #{fileType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

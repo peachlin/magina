@@ -2,11 +2,18 @@ server:
   port: 9012
 spring:
   application:
-    name: epic-cp9
+    name: magina
   datasource:
-    url: "jdbc:mysql://47.101.177.31:3306/zmsj?useUnicode=true&characterEncoding=UTF-8"
-    username: root
-    password: 123456
+    url: "jdbc:mysql://139.129.163.156:3306/zy_ecology?useUnicode=true&characterEncoding=UTF-8"
+    username: ziyouxing
+    password: ziyouxing
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
   mapper-locations: mybatis/*.xml
+
+# 配置pageHelper分页插件的内容
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

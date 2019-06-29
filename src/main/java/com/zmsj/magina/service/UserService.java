@@ -1,7 +1,7 @@
 package com.zmsj.magina.service;
 
-import com.zmsj.magina.dao.UserMapper;
-import com.zmsj.magina.model.User;
+import com.zmsj.magina.dao.TbUserMapper;
+import com.zmsj.magina.model.TbUser;
 import javax.annotation.Resource;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   @Resource
-  private UserMapper userMapper;
+  private TbUserMapper userMapper;
 
-  public User login(@NonNull String userName, @NonNull String password) {
+  public TbUser login(@NonNull String userName, @NonNull String password) {
 
     return userMapper.selectByUserNameAndPwd(userName, password);
   }

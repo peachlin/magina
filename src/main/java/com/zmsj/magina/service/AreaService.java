@@ -1,7 +1,7 @@
 package com.zmsj.magina.service;
 
-import com.zmsj.magina.dao.AreaMapper;
-import com.zmsj.magina.model.Area;
+import com.zmsj.magina.dao.BAreaMapper;
+import com.zmsj.magina.model.BArea;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 public class AreaService {
 
   @Resource
-  private AreaMapper areaMapper;
+  private BAreaMapper areaMapper;
 
-  public List<Area> listAreas() {
+  public List<BArea> listAreas() {
 
-    return areaMapper.selectAll();
+    return areaMapper.listAll();
   }
 }

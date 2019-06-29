@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.PlgBatchMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.PlgBatch">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="time_point" property="timePoint" jdbcType="TIMESTAMP"/>
+    <result column="frequency" property="frequency" jdbcType="VARCHAR"/>
+    <result column="type" property="type" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, time_point, frequency, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_batch
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete
+    from plg_batch
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.PlgBatch">
+    insert into plg_batch (id, time_point, frequency,
+                           type)
+    values (#{id,jdbcType=VARCHAR}, #{timePoint,jdbcType=TIMESTAMP}, #{frequency,jdbcType=VARCHAR},
+            #{type,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.PlgBatch">
+    insert into plg_batch
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="timePoint != null">
+        time_point,
+      </if>
+      <if test="frequency != null">
+        frequency,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="timePoint != null">
+        #{timePoint,jdbcType=TIMESTAMP},
+      </if>
+      <if test="frequency != null">
+        #{frequency,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.PlgBatch">
+    update plg_batch
+    <set>
+      <if test="timePoint != null">
+        time_point = #{timePoint,jdbcType=TIMESTAMP},
+      </if>
+      <if test="frequency != null">
+        frequency = #{frequency,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.PlgBatch">
+    update plg_batch
+    set time_point = #{timePoint,jdbcType=TIMESTAMP},
+        frequency  = #{frequency,jdbcType=VARCHAR},
+        type       = #{type,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

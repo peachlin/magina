@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.TCollectionInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.TCollectionInfo">
+    <id column="id" property="id" jdbcType="INTEGER"/>
+    <result column="monitor_data_id" property="monitorDataId" jdbcType="INTEGER"/>
+    <result column="collection_time" property="collectionTime" jdbcType="TIMESTAMP"/>
+    <result column="collection_term_id" property="collectionTermId" jdbcType="INTEGER"/>
+    <result column="collection_value" property="collectionValue" jdbcType="VARCHAR"/>
+    <result column="unit" property="unit" jdbcType="VARCHAR"/>
+    <result column="min_value" property="minValue" jdbcType="VARCHAR"/>
+    <result column="max_value" property="maxValue" jdbcType="VARCHAR"/>
+    <result column="variable_name" property="variableName" jdbcType="VARCHAR"/>
+    <result column="collection_term_name" property="collectionTermName" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, monitor_data_id, collection_time, collection_term_id, collection_value, unit, 
+    min_value, max_value, variable_name, collection_term_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
+    from t_collection_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete
+    from t_collection_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.TCollectionInfo">
+    insert into t_collection_info (id, monitor_data_id, collection_time,
+                                   collection_term_id, collection_value, unit,
+                                   min_value, max_value, variable_name,
+                                   collection_term_name)
+    values (#{id,jdbcType=INTEGER}, #{monitorDataId,jdbcType=INTEGER},
+            #{collectionTime,jdbcType=TIMESTAMP},
+            #{collectionTermId,jdbcType=INTEGER}, #{collectionValue,jdbcType=VARCHAR},
+            #{unit,jdbcType=VARCHAR},
+            #{minValue,jdbcType=VARCHAR}, #{maxValue,jdbcType=VARCHAR},
+            #{variableName,jdbcType=VARCHAR},
+            #{collectionTermName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.TCollectionInfo">
+    insert into t_collection_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="monitorDataId != null">
+        monitor_data_id,
+      </if>
+      <if test="collectionTime != null">
+        collection_time,
+      </if>
+      <if test="collectionTermId != null">
+        collection_term_id,
+      </if>
+      <if test="collectionValue != null">
+        collection_value,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="minValue != null">
+        min_value,
+      </if>
+      <if test="maxValue != null">
+        max_value,
+      </if>
+      <if test="variableName != null">
+        variable_name,
+      </if>
+      <if test="collectionTermName != null">
+        collection_term_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="monitorDataId != null">
+        #{monitorDataId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionTime != null">
+        #{collectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectionTermId != null">
+        #{collectionTermId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionValue != null">
+        #{collectionValue,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="minValue != null">
+        #{minValue,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        #{maxValue,jdbcType=VARCHAR},
+      </if>
+      <if test="variableName != null">
+        #{variableName,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionTermName != null">
+        #{collectionTermName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.TCollectionInfo">
+    update t_collection_info
+    <set>
+      <if test="monitorDataId != null">
+        monitor_data_id = #{monitorDataId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionTime != null">
+        collection_time = #{collectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectionTermId != null">
+        collection_term_id = #{collectionTermId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionValue != null">
+        collection_value = #{collectionValue,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="minValue != null">
+        min_value = #{minValue,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        max_value = #{maxValue,jdbcType=VARCHAR},
+      </if>
+      <if test="variableName != null">
+        variable_name = #{variableName,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionTermName != null">
+        collection_term_name = #{collectionTermName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.TCollectionInfo">
+    update t_collection_info
+    set monitor_data_id      = #{monitorDataId,jdbcType=INTEGER},
+        collection_time      = #{collectionTime,jdbcType=TIMESTAMP},
+        collection_term_id   = #{collectionTermId,jdbcType=INTEGER},
+        collection_value     = #{collectionValue,jdbcType=VARCHAR},
+        unit                 = #{unit,jdbcType=VARCHAR},
+        min_value            = #{minValue,jdbcType=VARCHAR},
+        max_value            = #{maxValue,jdbcType=VARCHAR},
+        variable_name        = #{variableName,jdbcType=VARCHAR},
+        collection_term_name = #{collectionTermName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.BCollectionTermMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.BCollectionTerm">
+    <id column="id" property="id" jdbcType="INTEGER"/>
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <result column="unit" property="unit" jdbcType="VARCHAR"/>
+    <result column="min_value" property="minValue" jdbcType="VARCHAR"/>
+    <result column="max_value" property="maxValue" jdbcType="VARCHAR"/>
+    <result column="variable_name" property="variableName" jdbcType="VARCHAR"/>
+    <result column="monitor_device_id" property="monitorDeviceId" jdbcType="INTEGER"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="create_user" property="createUser" jdbcType="INTEGER"/>
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    <result column="update_user" property="updateUser" jdbcType="INTEGER"/>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zmsj.magina.model.BCollectionTerm"
+    extends="BaseResultMap">
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, unit, min_value, max_value, variable_name, monitor_device_id, create_time, 
+    create_user, update_time, update_user
+  </sql>
+  <sql id="Blob_Column_List">
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List"/>
+    from b_collection_term
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete
+    from b_collection_term
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.BCollectionTerm">
+    insert into b_collection_term (id, name, unit,
+                                   min_value, max_value, variable_name,
+                                   monitor_device_id, create_time, create_user,
+                                   update_time, update_user, remark)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR},
+            #{minValue,jdbcType=VARCHAR}, #{maxValue,jdbcType=VARCHAR},
+            #{variableName,jdbcType=VARCHAR},
+            #{monitorDeviceId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+            #{createUser,jdbcType=INTEGER},
+            #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=INTEGER},
+            #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.BCollectionTerm">
+    insert into b_collection_term
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="minValue != null">
+        min_value,
+      </if>
+      <if test="maxValue != null">
+        max_value,
+      </if>
+      <if test="variableName != null">
+        variable_name,
+      </if>
+      <if test="monitorDeviceId != null">
+        monitor_device_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="minValue != null">
+        #{minValue,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        #{maxValue,jdbcType=VARCHAR},
+      </if>
+      <if test="variableName != null">
+        #{variableName,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorDeviceId != null">
+        #{monitorDeviceId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.BCollectionTerm">
+    update b_collection_term
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="minValue != null">
+        min_value = #{minValue,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        max_value = #{maxValue,jdbcType=VARCHAR},
+      </if>
+      <if test="variableName != null">
+        variable_name = #{variableName,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorDeviceId != null">
+        monitor_device_id = #{monitorDeviceId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zmsj.magina.model.BCollectionTerm">
+    update b_collection_term
+    set name              = #{name,jdbcType=VARCHAR},
+        unit              = #{unit,jdbcType=VARCHAR},
+        min_value         = #{minValue,jdbcType=VARCHAR},
+        max_value         = #{maxValue,jdbcType=VARCHAR},
+        variable_name     = #{variableName,jdbcType=VARCHAR},
+        monitor_device_id = #{monitorDeviceId,jdbcType=INTEGER},
+        create_time       = #{createTime,jdbcType=TIMESTAMP},
+        create_user       = #{createUser,jdbcType=INTEGER},
+        update_time       = #{updateTime,jdbcType=TIMESTAMP},
+        update_user       = #{updateUser,jdbcType=INTEGER},
+        remark            = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.BCollectionTerm">
+    update b_collection_term
+    set name              = #{name,jdbcType=VARCHAR},
+        unit              = #{unit,jdbcType=VARCHAR},
+        min_value         = #{minValue,jdbcType=VARCHAR},
+        max_value         = #{maxValue,jdbcType=VARCHAR},
+        variable_name     = #{variableName,jdbcType=VARCHAR},
+        monitor_device_id = #{monitorDeviceId,jdbcType=INTEGER},
+        create_time       = #{createTime,jdbcType=TIMESTAMP},
+        create_user       = #{createUser,jdbcType=INTEGER},
+        update_time       = #{updateTime,jdbcType=TIMESTAMP},
+        update_user       = #{updateUser,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

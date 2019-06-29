@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.PlgFluxSystemMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.PlgFluxSystem">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="collectorid" property="collectorid" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="collect_frequency" property="collectFrequency" jdbcType="DECIMAL"/>
+    <result column="timestamp" property="timestamp" jdbcType="VARCHAR"/>
+    <result column="record" property="record" jdbcType="DECIMAL"/>
+    <result column="fc_molar" property="fcMolar" jdbcType="DECIMAL"/>
+    <result column="fc_mass" property="fcMass" jdbcType="DECIMAL"/>
+    <result column="fc_qc_grade" property="fcQcGrade" jdbcType="DECIMAL"/>
+    <result column="fc_samples_tot" property="fcSamplesTot" jdbcType="DECIMAL"/>
+    <result column="le" property="le" jdbcType="DECIMAL"/>
+    <result column="le_qc_grade" property="leQcGrade" jdbcType="DECIMAL"/>
+    <result column="le_samples_tot" property="leSamplesTot" jdbcType="DECIMAL"/>
+    <result column="h" property="h" jdbcType="DECIMAL"/>
+    <result column="h_qc_grade" property="hQcGrade" jdbcType="DECIMAL"/>
+    <result column="h_samples_tot" property="hSamplesTot" jdbcType="DECIMAL"/>
+    <result column="bowen_ratio" property="bowenRatio" jdbcType="DECIMAL"/>
+    <result column="tau" property="tau" jdbcType="DECIMAL"/>
+    <result column="tau_qc_grade" property="tauQcGrade" jdbcType="DECIMAL"/>
+    <result column="u_star" property="uStar" jdbcType="DECIMAL"/>
+    <result column="t_star" property="tStar" jdbcType="DECIMAL"/>
+    <result column="tke" property="tke" jdbcType="DECIMAL"/>
+    <result column="tc_avg" property="tcAvg" jdbcType="DECIMAL"/>
+    <result column="td_avg" property="tdAvg" jdbcType="DECIMAL"/>
+    <result column="rh_avg" property="rhAvg" jdbcType="DECIMAL"/>
+    <result column="e_sat_avg" property="eSatAvg" jdbcType="DECIMAL"/>
+    <result column="e_avg" property="eAvg" jdbcType="DECIMAL"/>
+    <result column="amb_press_avg" property="ambPressAvg" jdbcType="DECIMAL"/>
+    <result column="vpd_air" property="vpdAir" jdbcType="DECIMAL"/>
+    <result column="ux_avg" property="uxAvg" jdbcType="DECIMAL"/>
+    <result column="ux_std" property="uxStd" jdbcType="DECIMAL"/>
+    <result column="uy_avg" property="uyAvg" jdbcType="DECIMAL"/>
+    <result column="uy_std" property="uyStd" jdbcType="DECIMAL"/>
+    <result column="uz_avg" property="uzAvg" jdbcType="DECIMAL"/>
+    <result column="uz_std" property="uzStd" jdbcType="DECIMAL"/>
+    <result column="ts_avg" property="tsAvg" jdbcType="DECIMAL"/>
+    <result column="ts_std" property="tsStd" jdbcType="DECIMAL"/>
+    <result column="sonic_azimuth" property="sonicAzimuth" jdbcType="DECIMAL"/>
+    <result column="wnd_spd" property="wndSpd" jdbcType="DECIMAL"/>
+    <result column="rslt_wnd_spd" property="rsltWndSpd" jdbcType="DECIMAL"/>
+    <result column="wnd_dir_sonic" property="wndDirSonic" jdbcType="DECIMAL"/>
+    <result column="std_wnd_dir" property="stdWndDir" jdbcType="DECIMAL"/>
+    <result column="wnd_dir_compass" property="wndDirCompass" jdbcType="DECIMAL"/>
+    <result column="co2_molfrac_avg" property="co2MolfracAvg" jdbcType="DECIMAL"/>
+    <result column="co2_mixratio_avg" property="co2MixratioAvg" jdbcType="DECIMAL"/>
+    <result column="co2_avg" property="co2Avg" jdbcType="DECIMAL"/>
+    <result column="co2_std" property="co2Std" jdbcType="DECIMAL"/>
+    <result column="h2o_molfrac_avg" property="h2oMolfracAvg" jdbcType="DECIMAL"/>
+    <result column="h2o_mixratio_avg" property="h2oMixratioAvg" jdbcType="DECIMAL"/>
+    <result column="h2o_avg" property="h2oAvg" jdbcType="DECIMAL"/>
+    <result column="h2o_std" property="h2oStd" jdbcType="DECIMAL"/>
+    <result column="upwnd_dist_intrst" property="upwndDistIntrst" jdbcType="DECIMAL"/>
+    <result column="fp_dist_intrst" property="fpDistIntrst" jdbcType="DECIMAL"/>
+    <result column="fp_max" property="fpMax" jdbcType="DECIMAL"/>
+    <result column="fp_40" property="fp40" jdbcType="DECIMAL"/>
+    <result column="fp_55" property="fp55" jdbcType="DECIMAL"/>
+    <result column="fp_90" property="fp90" jdbcType="DECIMAL"/>
+    <result column="fp_equation" property="fpEquation" jdbcType="DECIMAL"/>
+    <result column="file_type" property="fileType" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collectorid, create_time, collect_frequency, timestamp, record, fc_molar, fc_mass, 
+    fc_qc_grade, fc_samples_tot, le, le_qc_grade, le_samples_tot, h, h_qc_grade, h_samples_tot, 
+    bowen_ratio, tau, tau_qc_grade, u_star, t_star, tke, tc_avg, td_avg, rh_avg, e_sat_avg, 
+    e_avg, amb_press_avg, vpd_air, ux_avg, ux_std, uy_avg, uy_std, uz_avg, uz_std, ts_avg, 
+    ts_std, sonic_azimuth, wnd_spd, rslt_wnd_spd, wnd_dir_sonic, std_wnd_dir, wnd_dir_compass, 
+    co2_molfrac_avg, co2_mixratio_avg, co2_avg, co2_std, h2o_molfrac_avg, h2o_mixratio_avg, 
+    h2o_avg, h2o_std, upwnd_dist_intrst, fp_dist_intrst, fp_max, fp_40, fp_55, fp_90, 
+    fp_equation, file_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_flux_system
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete
+    from plg_flux_system
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.PlgFluxSystem">
+    insert into plg_flux_system (id, collectorid, create_time,
+                                 collect_frequency, timestamp, record,
+                                 fc_molar, fc_mass, fc_qc_grade,
+                                 fc_samples_tot, le, le_qc_grade,
+                                 le_samples_tot, h, h_qc_grade,
+                                 h_samples_tot, bowen_ratio, tau,
+                                 tau_qc_grade, u_star, t_star,
+                                 tke, tc_avg, td_avg,
+                                 rh_avg, e_sat_avg, e_avg,
+                                 amb_press_avg, vpd_air, ux_avg,
+                                 ux_std, uy_avg, uy_std,
+                                 uz_avg, uz_std, ts_avg,
+                                 ts_std, sonic_azimuth, wnd_spd,
+                                 rslt_wnd_spd, wnd_dir_sonic, std_wnd_dir,
+                                 wnd_dir_compass, co2_molfrac_avg, co2_mixratio_avg,
+                                 co2_avg, co2_std, h2o_molfrac_avg,
+                                 h2o_mixratio_avg, h2o_avg, h2o_std,
+                                 upwnd_dist_intrst, fp_dist_intrst, fp_max,
+                                 fp_40, fp_55, fp_90, fp_equation,
+                                 file_type)
+    values (#{id,jdbcType=VARCHAR}, #{collectorid,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{collectFrequency,jdbcType=DECIMAL}, #{timestamp,jdbcType=VARCHAR},
+            #{record,jdbcType=DECIMAL},
+            #{fcMolar,jdbcType=DECIMAL}, #{fcMass,jdbcType=DECIMAL}, #{fcQcGrade,jdbcType=DECIMAL},
+            #{fcSamplesTot,jdbcType=DECIMAL}, #{le,jdbcType=DECIMAL}, #{leQcGrade,jdbcType=DECIMAL},
+            #{leSamplesTot,jdbcType=DECIMAL}, #{h,jdbcType=DECIMAL}, #{hQcGrade,jdbcType=DECIMAL},
+            #{hSamplesTot,jdbcType=DECIMAL}, #{bowenRatio,jdbcType=DECIMAL},
+            #{tau,jdbcType=DECIMAL},
+            #{tauQcGrade,jdbcType=DECIMAL}, #{uStar,jdbcType=DECIMAL}, #{tStar,jdbcType=DECIMAL},
+            #{tke,jdbcType=DECIMAL}, #{tcAvg,jdbcType=DECIMAL}, #{tdAvg,jdbcType=DECIMAL},
+            #{rhAvg,jdbcType=DECIMAL}, #{eSatAvg,jdbcType=DECIMAL}, #{eAvg,jdbcType=DECIMAL},
+            #{ambPressAvg,jdbcType=DECIMAL}, #{vpdAir,jdbcType=DECIMAL}, #{uxAvg,jdbcType=DECIMAL},
+            #{uxStd,jdbcType=DECIMAL}, #{uyAvg,jdbcType=DECIMAL}, #{uyStd,jdbcType=DECIMAL},
+            #{uzAvg,jdbcType=DECIMAL}, #{uzStd,jdbcType=DECIMAL}, #{tsAvg,jdbcType=DECIMAL},
+            #{tsStd,jdbcType=DECIMAL}, #{sonicAzimuth,jdbcType=DECIMAL}, #{wndSpd,jdbcType=DECIMAL},
+            #{rsltWndSpd,jdbcType=DECIMAL}, #{wndDirSonic,jdbcType=DECIMAL},
+            #{stdWndDir,jdbcType=DECIMAL},
+            #{wndDirCompass,jdbcType=DECIMAL}, #{co2MolfracAvg,jdbcType=DECIMAL},
+            #{co2MixratioAvg,jdbcType=DECIMAL},
+            #{co2Avg,jdbcType=DECIMAL}, #{co2Std,jdbcType=DECIMAL},
+            #{h2oMolfracAvg,jdbcType=DECIMAL},
+            #{h2oMixratioAvg,jdbcType=DECIMAL}, #{h2oAvg,jdbcType=DECIMAL},
+            #{h2oStd,jdbcType=DECIMAL},
+            #{upwndDistIntrst,jdbcType=DECIMAL}, #{fpDistIntrst,jdbcType=DECIMAL},
+            #{fpMax,jdbcType=DECIMAL},
+            #{fp40,jdbcType=DECIMAL}, #{fp55,jdbcType=DECIMAL}, #{fp90,jdbcType=DECIMAL},
+            #{fpEquation,jdbcType=DECIMAL},
+            #{fileType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.PlgFluxSystem">
+    insert into plg_flux_system
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectorid != null">
+        collectorid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="fcMolar != null">
+        fc_molar,
+      </if>
+      <if test="fcMass != null">
+        fc_mass,
+      </if>
+      <if test="fcQcGrade != null">
+        fc_qc_grade,
+      </if>
+      <if test="fcSamplesTot != null">
+        fc_samples_tot,
+      </if>
+      <if test="le != null">
+        le,
+      </if>
+      <if test="leQcGrade != null">
+        le_qc_grade,
+      </if>
+      <if test="leSamplesTot != null">
+        le_samples_tot,
+      </if>
+      <if test="h != null">
+        h,
+      </if>
+      <if test="hQcGrade != null">
+        h_qc_grade,
+      </if>
+      <if test="hSamplesTot != null">
+        h_samples_tot,
+      </if>
+      <if test="bowenRatio != null">
+        bowen_ratio,
+      </if>
+      <if test="tau != null">
+        tau,
+      </if>
+      <if test="tauQcGrade != null">
+        tau_qc_grade,
+      </if>
+      <if test="uStar != null">
+        u_star,
+      </if>
+      <if test="tStar != null">
+        t_star,
+      </if>
+      <if test="tke != null">
+        tke,
+      </if>
+      <if test="tcAvg != null">
+        tc_avg,
+      </if>
+      <if test="tdAvg != null">
+        td_avg,
+      </if>
+      <if test="rhAvg != null">
+        rh_avg,
+      </if>
+      <if test="eSatAvg != null">
+        e_sat_avg,
+      </if>
+      <if test="eAvg != null">
+        e_avg,
+      </if>
+      <if test="ambPressAvg != null">
+        amb_press_avg,
+      </if>
+      <if test="vpdAir != null">
+        vpd_air,
+      </if>
+      <if test="uxAvg != null">
+        ux_avg,
+      </if>
+      <if test="uxStd != null">
+        ux_std,
+      </if>
+      <if test="uyAvg != null">
+        uy_avg,
+      </if>
+      <if test="uyStd != null">
+        uy_std,
+      </if>
+      <if test="uzAvg != null">
+        uz_avg,
+      </if>
+      <if test="uzStd != null">
+        uz_std,
+      </if>
+      <if test="tsAvg != null">
+        ts_avg,
+      </if>
+      <if test="tsStd != null">
+        ts_std,
+      </if>
+      <if test="sonicAzimuth != null">
+        sonic_azimuth,
+      </if>
+      <if test="wndSpd != null">
+        wnd_spd,
+      </if>
+      <if test="rsltWndSpd != null">
+        rslt_wnd_spd,
+      </if>
+      <if test="wndDirSonic != null">
+        wnd_dir_sonic,
+      </if>
+      <if test="stdWndDir != null">
+        std_wnd_dir,
+      </if>
+      <if test="wndDirCompass != null">
+        wnd_dir_compass,
+      </if>
+      <if test="co2MolfracAvg != null">
+        co2_molfrac_avg,
+      </if>
+      <if test="co2MixratioAvg != null">
+        co2_mixratio_avg,
+      </if>
+      <if test="co2Avg != null">
+        co2_avg,
+      </if>
+      <if test="co2Std != null">
+        co2_std,
+      </if>
+      <if test="h2oMolfracAvg != null">
+        h2o_molfrac_avg,
+      </if>
+      <if test="h2oMixratioAvg != null">
+        h2o_mixratio_avg,
+      </if>
+      <if test="h2oAvg != null">
+        h2o_avg,
+      </if>
+      <if test="h2oStd != null">
+        h2o_std,
+      </if>
+      <if test="upwndDistIntrst != null">
+        upwnd_dist_intrst,
+      </if>
+      <if test="fpDistIntrst != null">
+        fp_dist_intrst,
+      </if>
+      <if test="fpMax != null">
+        fp_max,
+      </if>
+      <if test="fp40 != null">
+        fp_40,
+      </if>
+      <if test="fp55 != null">
+        fp_55,
+      </if>
+      <if test="fp90 != null">
+        fp_90,
+      </if>
+      <if test="fpEquation != null">
+        fp_equation,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorid != null">
+        #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="fcMolar != null">
+        #{fcMolar,jdbcType=DECIMAL},
+      </if>
+      <if test="fcMass != null">
+        #{fcMass,jdbcType=DECIMAL},
+      </if>
+      <if test="fcQcGrade != null">
+        #{fcQcGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="fcSamplesTot != null">
+        #{fcSamplesTot,jdbcType=DECIMAL},
+      </if>
+      <if test="le != null">
+        #{le,jdbcType=DECIMAL},
+      </if>
+      <if test="leQcGrade != null">
+        #{leQcGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="leSamplesTot != null">
+        #{leSamplesTot,jdbcType=DECIMAL},
+      </if>
+      <if test="h != null">
+        #{h,jdbcType=DECIMAL},
+      </if>
+      <if test="hQcGrade != null">
+        #{hQcGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="hSamplesTot != null">
+        #{hSamplesTot,jdbcType=DECIMAL},
+      </if>
+      <if test="bowenRatio != null">
+        #{bowenRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="tau != null">
+        #{tau,jdbcType=DECIMAL},
+      </if>
+      <if test="tauQcGrade != null">
+        #{tauQcGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="uStar != null">
+        #{uStar,jdbcType=DECIMAL},
+      </if>
+      <if test="tStar != null">
+        #{tStar,jdbcType=DECIMAL},
+      </if>
+      <if test="tke != null">
+        #{tke,jdbcType=DECIMAL},
+      </if>
+      <if test="tcAvg != null">
+        #{tcAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tdAvg != null">
+        #{tdAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rhAvg != null">
+        #{rhAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="eSatAvg != null">
+        #{eSatAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="eAvg != null">
+        #{eAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ambPressAvg != null">
+        #{ambPressAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vpdAir != null">
+        #{vpdAir,jdbcType=DECIMAL},
+      </if>
+      <if test="uxAvg != null">
+        #{uxAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="uxStd != null">
+        #{uxStd,jdbcType=DECIMAL},
+      </if>
+      <if test="uyAvg != null">
+        #{uyAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="uyStd != null">
+        #{uyStd,jdbcType=DECIMAL},
+      </if>
+      <if test="uzAvg != null">
+        #{uzAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="uzStd != null">
+        #{uzStd,jdbcType=DECIMAL},
+      </if>
+      <if test="tsAvg != null">
+        #{tsAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsStd != null">
+        #{tsStd,jdbcType=DECIMAL},
+      </if>
+      <if test="sonicAzimuth != null">
+        #{sonicAzimuth,jdbcType=DECIMAL},
+      </if>
+      <if test="wndSpd != null">
+        #{wndSpd,jdbcType=DECIMAL},
+      </if>
+      <if test="rsltWndSpd != null">
+        #{rsltWndSpd,jdbcType=DECIMAL},
+      </if>
+      <if test="wndDirSonic != null">
+        #{wndDirSonic,jdbcType=DECIMAL},
+      </if>
+      <if test="stdWndDir != null">
+        #{stdWndDir,jdbcType=DECIMAL},
+      </if>
+      <if test="wndDirCompass != null">
+        #{wndDirCompass,jdbcType=DECIMAL},
+      </if>
+      <if test="co2MolfracAvg != null">
+        #{co2MolfracAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="co2MixratioAvg != null">
+        #{co2MixratioAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="co2Avg != null">
+        #{co2Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="co2Std != null">
+        #{co2Std,jdbcType=DECIMAL},
+      </if>
+      <if test="h2oMolfracAvg != null">
+        #{h2oMolfracAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="h2oMixratioAvg != null">
+        #{h2oMixratioAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="h2oAvg != null">
+        #{h2oAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="h2oStd != null">
+        #{h2oStd,jdbcType=DECIMAL},
+      </if>
+      <if test="upwndDistIntrst != null">
+        #{upwndDistIntrst,jdbcType=DECIMAL},
+      </if>
+      <if test="fpDistIntrst != null">
+        #{fpDistIntrst,jdbcType=DECIMAL},
+      </if>
+      <if test="fpMax != null">
+        #{fpMax,jdbcType=DECIMAL},
+      </if>
+      <if test="fp40 != null">
+        #{fp40,jdbcType=DECIMAL},
+      </if>
+      <if test="fp55 != null">
+        #{fp55,jdbcType=DECIMAL},
+      </if>
+      <if test="fp90 != null">
+        #{fp90,jdbcType=DECIMAL},
+      </if>
+      <if test="fpEquation != null">
+        #{fpEquation,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.PlgFluxSystem">
+    update plg_flux_system
+    <set>
+      <if test="collectorid != null">
+        collectorid = #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="fcMolar != null">
+        fc_molar = #{fcMolar,jdbcType=DECIMAL},
+      </if>
+      <if test="fcMass != null">
+        fc_mass = #{fcMass,jdbcType=DECIMAL},
+      </if>
+      <if test="fcQcGrade != null">
+        fc_qc_grade = #{fcQcGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="fcSamplesTot != null">
+        fc_samples_tot = #{fcSamplesTot,jdbcType=DECIMAL},
+      </if>
+      <if test="le != null">
+        le = #{le,jdbcType=DECIMAL},
+      </if>
+      <if test="leQcGrade != null">
+        le_qc_grade = #{leQcGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="leSamplesTot != null">
+        le_samples_tot = #{leSamplesTot,jdbcType=DECIMAL},
+      </if>
+      <if test="h != null">
+        h = #{h,jdbcType=DECIMAL},
+      </if>
+      <if test="hQcGrade != null">
+        h_qc_grade = #{hQcGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="hSamplesTot != null">
+        h_samples_tot = #{hSamplesTot,jdbcType=DECIMAL},
+      </if>
+      <if test="bowenRatio != null">
+        bowen_ratio = #{bowenRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="tau != null">
+        tau = #{tau,jdbcType=DECIMAL},
+      </if>
+      <if test="tauQcGrade != null">
+        tau_qc_grade = #{tauQcGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="uStar != null">
+        u_star = #{uStar,jdbcType=DECIMAL},
+      </if>
+      <if test="tStar != null">
+        t_star = #{tStar,jdbcType=DECIMAL},
+      </if>
+      <if test="tke != null">
+        tke = #{tke,jdbcType=DECIMAL},
+      </if>
+      <if test="tcAvg != null">
+        tc_avg = #{tcAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tdAvg != null">
+        td_avg = #{tdAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rhAvg != null">
+        rh_avg = #{rhAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="eSatAvg != null">
+        e_sat_avg = #{eSatAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="eAvg != null">
+        e_avg = #{eAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ambPressAvg != null">
+        amb_press_avg = #{ambPressAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vpdAir != null">
+        vpd_air = #{vpdAir,jdbcType=DECIMAL},
+      </if>
+      <if test="uxAvg != null">
+        ux_avg = #{uxAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="uxStd != null">
+        ux_std = #{uxStd,jdbcType=DECIMAL},
+      </if>
+      <if test="uyAvg != null">
+        uy_avg = #{uyAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="uyStd != null">
+        uy_std = #{uyStd,jdbcType=DECIMAL},
+      </if>
+      <if test="uzAvg != null">
+        uz_avg = #{uzAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="uzStd != null">
+        uz_std = #{uzStd,jdbcType=DECIMAL},
+      </if>
+      <if test="tsAvg != null">
+        ts_avg = #{tsAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsStd != null">
+        ts_std = #{tsStd,jdbcType=DECIMAL},
+      </if>
+      <if test="sonicAzimuth != null">
+        sonic_azimuth = #{sonicAzimuth,jdbcType=DECIMAL},
+      </if>
+      <if test="wndSpd != null">
+        wnd_spd = #{wndSpd,jdbcType=DECIMAL},
+      </if>
+      <if test="rsltWndSpd != null">
+        rslt_wnd_spd = #{rsltWndSpd,jdbcType=DECIMAL},
+      </if>
+      <if test="wndDirSonic != null">
+        wnd_dir_sonic = #{wndDirSonic,jdbcType=DECIMAL},
+      </if>
+      <if test="stdWndDir != null">
+        std_wnd_dir = #{stdWndDir,jdbcType=DECIMAL},
+      </if>
+      <if test="wndDirCompass != null">
+        wnd_dir_compass = #{wndDirCompass,jdbcType=DECIMAL},
+      </if>
+      <if test="co2MolfracAvg != null">
+        co2_molfrac_avg = #{co2MolfracAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="co2MixratioAvg != null">
+        co2_mixratio_avg = #{co2MixratioAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="co2Avg != null">
+        co2_avg = #{co2Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="co2Std != null">
+        co2_std = #{co2Std,jdbcType=DECIMAL},
+      </if>
+      <if test="h2oMolfracAvg != null">
+        h2o_molfrac_avg = #{h2oMolfracAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="h2oMixratioAvg != null">
+        h2o_mixratio_avg = #{h2oMixratioAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="h2oAvg != null">
+        h2o_avg = #{h2oAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="h2oStd != null">
+        h2o_std = #{h2oStd,jdbcType=DECIMAL},
+      </if>
+      <if test="upwndDistIntrst != null">
+        upwnd_dist_intrst = #{upwndDistIntrst,jdbcType=DECIMAL},
+      </if>
+      <if test="fpDistIntrst != null">
+        fp_dist_intrst = #{fpDistIntrst,jdbcType=DECIMAL},
+      </if>
+      <if test="fpMax != null">
+        fp_max = #{fpMax,jdbcType=DECIMAL},
+      </if>
+      <if test="fp40 != null">
+        fp_40 = #{fp40,jdbcType=DECIMAL},
+      </if>
+      <if test="fp55 != null">
+        fp_55 = #{fp55,jdbcType=DECIMAL},
+      </if>
+      <if test="fp90 != null">
+        fp_90 = #{fp90,jdbcType=DECIMAL},
+      </if>
+      <if test="fpEquation != null">
+        fp_equation = #{fpEquation,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.PlgFluxSystem">
+    update plg_flux_system
+    set collectorid       = #{collectorid,jdbcType=VARCHAR},
+        create_time       = #{createTime,jdbcType=TIMESTAMP},
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+        timestamp         = #{timestamp,jdbcType=VARCHAR},
+        record            = #{record,jdbcType=DECIMAL},
+        fc_molar          = #{fcMolar,jdbcType=DECIMAL},
+        fc_mass           = #{fcMass,jdbcType=DECIMAL},
+        fc_qc_grade       = #{fcQcGrade,jdbcType=DECIMAL},
+        fc_samples_tot    = #{fcSamplesTot,jdbcType=DECIMAL},
+        le                = #{le,jdbcType=DECIMAL},
+        le_qc_grade       = #{leQcGrade,jdbcType=DECIMAL},
+        le_samples_tot    = #{leSamplesTot,jdbcType=DECIMAL},
+        h                 = #{h,jdbcType=DECIMAL},
+        h_qc_grade        = #{hQcGrade,jdbcType=DECIMAL},
+        h_samples_tot     = #{hSamplesTot,jdbcType=DECIMAL},
+        bowen_ratio       = #{bowenRatio,jdbcType=DECIMAL},
+        tau               = #{tau,jdbcType=DECIMAL},
+        tau_qc_grade      = #{tauQcGrade,jdbcType=DECIMAL},
+        u_star            = #{uStar,jdbcType=DECIMAL},
+        t_star            = #{tStar,jdbcType=DECIMAL},
+        tke               = #{tke,jdbcType=DECIMAL},
+        tc_avg            = #{tcAvg,jdbcType=DECIMAL},
+        td_avg            = #{tdAvg,jdbcType=DECIMAL},
+        rh_avg            = #{rhAvg,jdbcType=DECIMAL},
+        e_sat_avg         = #{eSatAvg,jdbcType=DECIMAL},
+        e_avg             = #{eAvg,jdbcType=DECIMAL},
+        amb_press_avg     = #{ambPressAvg,jdbcType=DECIMAL},
+        vpd_air           = #{vpdAir,jdbcType=DECIMAL},
+        ux_avg            = #{uxAvg,jdbcType=DECIMAL},
+        ux_std            = #{uxStd,jdbcType=DECIMAL},
+        uy_avg            = #{uyAvg,jdbcType=DECIMAL},
+        uy_std            = #{uyStd,jdbcType=DECIMAL},
+        uz_avg            = #{uzAvg,jdbcType=DECIMAL},
+        uz_std            = #{uzStd,jdbcType=DECIMAL},
+        ts_avg            = #{tsAvg,jdbcType=DECIMAL},
+        ts_std            = #{tsStd,jdbcType=DECIMAL},
+        sonic_azimuth     = #{sonicAzimuth,jdbcType=DECIMAL},
+        wnd_spd           = #{wndSpd,jdbcType=DECIMAL},
+        rslt_wnd_spd      = #{rsltWndSpd,jdbcType=DECIMAL},
+        wnd_dir_sonic     = #{wndDirSonic,jdbcType=DECIMAL},
+        std_wnd_dir       = #{stdWndDir,jdbcType=DECIMAL},
+        wnd_dir_compass   = #{wndDirCompass,jdbcType=DECIMAL},
+        co2_molfrac_avg   = #{co2MolfracAvg,jdbcType=DECIMAL},
+        co2_mixratio_avg  = #{co2MixratioAvg,jdbcType=DECIMAL},
+        co2_avg           = #{co2Avg,jdbcType=DECIMAL},
+        co2_std           = #{co2Std,jdbcType=DECIMAL},
+        h2o_molfrac_avg   = #{h2oMolfracAvg,jdbcType=DECIMAL},
+        h2o_mixratio_avg  = #{h2oMixratioAvg,jdbcType=DECIMAL},
+        h2o_avg           = #{h2oAvg,jdbcType=DECIMAL},
+        h2o_std           = #{h2oStd,jdbcType=DECIMAL},
+        upwnd_dist_intrst = #{upwndDistIntrst,jdbcType=DECIMAL},
+        fp_dist_intrst    = #{fpDistIntrst,jdbcType=DECIMAL},
+        fp_max            = #{fpMax,jdbcType=DECIMAL},
+        fp_40             = #{fp40,jdbcType=DECIMAL},
+        fp_55             = #{fp55,jdbcType=DECIMAL},
+        fp_90             = #{fp90,jdbcType=DECIMAL},
+        fp_equation       = #{fpEquation,jdbcType=DECIMAL},
+        file_type         = #{fileType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

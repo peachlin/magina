@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.PlgDykAutoStationMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.PlgDykAutoStation">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="collectorid" property="collectorid" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="collect_frequency" property="collectFrequency" jdbcType="DECIMAL"/>
+    <result column="timestamp" property="timestamp" jdbcType="TIMESTAMP"/>
+    <result column="record" property="record" jdbcType="DECIMAL"/>
+    <result column="batt_volt_min" property="battVoltMin" jdbcType="DECIMAL"/>
+    <result column="ptemp" property="ptemp" jdbcType="DECIMAL"/>
+    <result column="wd_avg" property="wdAvg" jdbcType="DECIMAL"/>
+    <result column="ws_avg" property="wsAvg" jdbcType="DECIMAL"/>
+    <result column="ta_avg" property="taAvg" jdbcType="DECIMAL"/>
+    <result column="rh_avg" property="rhAvg" jdbcType="DECIMAL"/>
+    <result column="press_avg" property="pressAvg" jdbcType="DECIMAL"/>
+    <result column="rain_avg" property="rainAvg" jdbcType="DECIMAL"/>
+    <result column="vwc1_avg" property="vwc1Avg" jdbcType="DECIMAL"/>
+    <result column="ec1_avg" property="ec1Avg" jdbcType="DECIMAL"/>
+    <result column="tsoil1_avg" property="tsoil1Avg" jdbcType="DECIMAL"/>
+    <result column="vwc2_avg" property="vwc2Avg" jdbcType="DECIMAL"/>
+    <result column="ec2_avg" property="ec2Avg" jdbcType="DECIMAL"/>
+    <result column="tsoil2_avg" property="tsoil2Avg" jdbcType="DECIMAL"/>
+    <result column="vwc3_avg" property="vwc3Avg" jdbcType="DECIMAL"/>
+    <result column="ec3_avg" property="ec3Avg" jdbcType="DECIMAL"/>
+    <result column="tsoil3_avg" property="tsoil3Avg" jdbcType="DECIMAL"/>
+    <result column="vwc4_avg" property="vwc4Avg" jdbcType="DECIMAL"/>
+    <result column="ec4_avg" property="ec4Avg" jdbcType="DECIMAL"/>
+    <result column="tsoil4_avg" property="tsoil4Avg" jdbcType="DECIMAL"/>
+    <result column="file_type" property="fileType" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collectorid, create_time, collect_frequency, timestamp, record, batt_volt_min, 
+    ptemp, wd_avg, ws_avg, ta_avg, rh_avg, press_avg, rain_avg, vwc1_avg, ec1_avg, tsoil1_avg, 
+    vwc2_avg, ec2_avg, tsoil2_avg, vwc3_avg, ec3_avg, tsoil3_avg, vwc4_avg, ec4_avg, 
+    tsoil4_avg, file_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_dyk_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectLastest" resultType="com.zmsj.magina.model.PlgDykAutoStation">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_dyk_auto_station
+    limit 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete
+    from plg_dyk_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.PlgDykAutoStation">
+    insert into plg_dyk_auto_station (id, collectorid, create_time,
+                                      collect_frequency, timestamp, record,
+                                      batt_volt_min, ptemp, wd_avg,
+                                      ws_avg, ta_avg, rh_avg,
+                                      press_avg, rain_avg, vwc1_avg,
+                                      ec1_avg, tsoil1_avg, vwc2_avg,
+                                      ec2_avg, tsoil2_avg, vwc3_avg,
+                                      ec3_avg, tsoil3_avg, vwc4_avg,
+                                      ec4_avg, tsoil4_avg, file_type)
+    values (#{id,jdbcType=VARCHAR}, #{collectorid,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{collectFrequency,jdbcType=DECIMAL}, #{timestamp,jdbcType=TIMESTAMP},
+            #{record,jdbcType=DECIMAL},
+            #{battVoltMin,jdbcType=DECIMAL}, #{ptemp,jdbcType=DECIMAL}, #{wdAvg,jdbcType=DECIMAL},
+            #{wsAvg,jdbcType=DECIMAL}, #{taAvg,jdbcType=DECIMAL}, #{rhAvg,jdbcType=DECIMAL},
+            #{pressAvg,jdbcType=DECIMAL}, #{rainAvg,jdbcType=DECIMAL}, #{vwc1Avg,jdbcType=DECIMAL},
+            #{ec1Avg,jdbcType=DECIMAL}, #{tsoil1Avg,jdbcType=DECIMAL}, #{vwc2Avg,jdbcType=DECIMAL},
+            #{ec2Avg,jdbcType=DECIMAL}, #{tsoil2Avg,jdbcType=DECIMAL}, #{vwc3Avg,jdbcType=DECIMAL},
+            #{ec3Avg,jdbcType=DECIMAL}, #{tsoil3Avg,jdbcType=DECIMAL}, #{vwc4Avg,jdbcType=DECIMAL},
+            #{ec4Avg,jdbcType=DECIMAL}, #{tsoil4Avg,jdbcType=DECIMAL}, #{fileType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.PlgDykAutoStation">
+    insert into plg_dyk_auto_station
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectorid != null">
+        collectorid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="battVoltMin != null">
+        batt_volt_min,
+      </if>
+      <if test="ptemp != null">
+        ptemp,
+      </if>
+      <if test="wdAvg != null">
+        wd_avg,
+      </if>
+      <if test="wsAvg != null">
+        ws_avg,
+      </if>
+      <if test="taAvg != null">
+        ta_avg,
+      </if>
+      <if test="rhAvg != null">
+        rh_avg,
+      </if>
+      <if test="pressAvg != null">
+        press_avg,
+      </if>
+      <if test="rainAvg != null">
+        rain_avg,
+      </if>
+      <if test="vwc1Avg != null">
+        vwc1_avg,
+      </if>
+      <if test="ec1Avg != null">
+        ec1_avg,
+      </if>
+      <if test="tsoil1Avg != null">
+        tsoil1_avg,
+      </if>
+      <if test="vwc2Avg != null">
+        vwc2_avg,
+      </if>
+      <if test="ec2Avg != null">
+        ec2_avg,
+      </if>
+      <if test="tsoil2Avg != null">
+        tsoil2_avg,
+      </if>
+      <if test="vwc3Avg != null">
+        vwc3_avg,
+      </if>
+      <if test="ec3Avg != null">
+        ec3_avg,
+      </if>
+      <if test="tsoil3Avg != null">
+        tsoil3_avg,
+      </if>
+      <if test="vwc4Avg != null">
+        vwc4_avg,
+      </if>
+      <if test="ec4Avg != null">
+        ec4_avg,
+      </if>
+      <if test="tsoil4Avg != null">
+        tsoil4_avg,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorid != null">
+        #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="battVoltMin != null">
+        #{battVoltMin,jdbcType=DECIMAL},
+      </if>
+      <if test="ptemp != null">
+        #{ptemp,jdbcType=DECIMAL},
+      </if>
+      <if test="wdAvg != null">
+        #{wdAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="wsAvg != null">
+        #{wsAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="taAvg != null">
+        #{taAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rhAvg != null">
+        #{rhAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pressAvg != null">
+        #{pressAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rainAvg != null">
+        #{rainAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc1Avg != null">
+        #{vwc1Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec1Avg != null">
+        #{ec1Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil1Avg != null">
+        #{tsoil1Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc2Avg != null">
+        #{vwc2Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec2Avg != null">
+        #{ec2Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil2Avg != null">
+        #{tsoil2Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc3Avg != null">
+        #{vwc3Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec3Avg != null">
+        #{ec3Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil3Avg != null">
+        #{tsoil3Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc4Avg != null">
+        #{vwc4Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec4Avg != null">
+        #{ec4Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil4Avg != null">
+        #{tsoil4Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.PlgDykAutoStation">
+    update plg_dyk_auto_station
+    <set>
+      <if test="collectorid != null">
+        collectorid = #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="battVoltMin != null">
+        batt_volt_min = #{battVoltMin,jdbcType=DECIMAL},
+      </if>
+      <if test="ptemp != null">
+        ptemp = #{ptemp,jdbcType=DECIMAL},
+      </if>
+      <if test="wdAvg != null">
+        wd_avg = #{wdAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="wsAvg != null">
+        ws_avg = #{wsAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="taAvg != null">
+        ta_avg = #{taAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rhAvg != null">
+        rh_avg = #{rhAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pressAvg != null">
+        press_avg = #{pressAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rainAvg != null">
+        rain_avg = #{rainAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc1Avg != null">
+        vwc1_avg = #{vwc1Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec1Avg != null">
+        ec1_avg = #{ec1Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil1Avg != null">
+        tsoil1_avg = #{tsoil1Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc2Avg != null">
+        vwc2_avg = #{vwc2Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec2Avg != null">
+        ec2_avg = #{ec2Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil2Avg != null">
+        tsoil2_avg = #{tsoil2Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc3Avg != null">
+        vwc3_avg = #{vwc3Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec3Avg != null">
+        ec3_avg = #{ec3Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil3Avg != null">
+        tsoil3_avg = #{tsoil3Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc4Avg != null">
+        vwc4_avg = #{vwc4Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec4Avg != null">
+        ec4_avg = #{ec4Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil4Avg != null">
+        tsoil4_avg = #{tsoil4Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.PlgDykAutoStation">
+    update plg_dyk_auto_station
+    set collectorid       = #{collectorid,jdbcType=VARCHAR},
+        create_time       = #{createTime,jdbcType=TIMESTAMP},
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+        timestamp         = #{timestamp,jdbcType=TIMESTAMP},
+        record            = #{record,jdbcType=DECIMAL},
+        batt_volt_min     = #{battVoltMin,jdbcType=DECIMAL},
+        ptemp             = #{ptemp,jdbcType=DECIMAL},
+        wd_avg            = #{wdAvg,jdbcType=DECIMAL},
+        ws_avg            = #{wsAvg,jdbcType=DECIMAL},
+        ta_avg            = #{taAvg,jdbcType=DECIMAL},
+        rh_avg            = #{rhAvg,jdbcType=DECIMAL},
+        press_avg         = #{pressAvg,jdbcType=DECIMAL},
+        rain_avg          = #{rainAvg,jdbcType=DECIMAL},
+        vwc1_avg          = #{vwc1Avg,jdbcType=DECIMAL},
+        ec1_avg           = #{ec1Avg,jdbcType=DECIMAL},
+        tsoil1_avg        = #{tsoil1Avg,jdbcType=DECIMAL},
+        vwc2_avg          = #{vwc2Avg,jdbcType=DECIMAL},
+        ec2_avg           = #{ec2Avg,jdbcType=DECIMAL},
+        tsoil2_avg        = #{tsoil2Avg,jdbcType=DECIMAL},
+        vwc3_avg          = #{vwc3Avg,jdbcType=DECIMAL},
+        ec3_avg           = #{ec3Avg,jdbcType=DECIMAL},
+        tsoil3_avg        = #{tsoil3Avg,jdbcType=DECIMAL},
+        vwc4_avg          = #{vwc4Avg,jdbcType=DECIMAL},
+        ec4_avg           = #{ec4Avg,jdbcType=DECIMAL},
+        tsoil4_avg        = #{tsoil4Avg,jdbcType=DECIMAL},
+        file_type         = #{fileType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.PlgVapourProfileMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.PlgVapourProfile">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="collectorid" property="collectorid" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="collect_frequency" property="collectFrequency" jdbcType="DECIMAL"/>
+    <result column="record" property="record" jdbcType="VARCHAR"/>
+    <result column="timestamp" property="timestamp" jdbcType="TIMESTAMP"/>
+    <result column="diag_ap200_avg" property="diagAp200Avg" jdbcType="DECIMAL"/>
+    <result column="l1_numsamples" property="l1Numsamples" jdbcType="DECIMAL"/>
+    <result column="l1_co2" property="l1Co2" jdbcType="DECIMAL"/>
+    <result column="l1_h2o" property="l1H2o" jdbcType="DECIMAL"/>
+    <result column="l1_cell_tmpr" property="l1CellTmpr" jdbcType="DECIMAL"/>
+    <result column="l1_cell_press" property="l1CellPress" jdbcType="DECIMAL"/>
+    <result column="l1_sample_flow" property="l1SampleFlow" jdbcType="DECIMAL"/>
+    <result column="l2_numsamples" property="l2Numsamples" jdbcType="DECIMAL"/>
+    <result column="l2_co2" property="l2Co2" jdbcType="DECIMAL"/>
+    <result column="l2_h2o" property="l2H2o" jdbcType="DECIMAL"/>
+    <result column="l2_cell_tmpr" property="l2CellTmpr" jdbcType="DECIMAL"/>
+    <result column="l2_cell_press" property="l2CellPress" jdbcType="DECIMAL"/>
+    <result column="l2_sample_flow" property="l2SampleFlow" jdbcType="DECIMAL"/>
+    <result column="l3_numsamples" property="l3Numsamples" jdbcType="DECIMAL"/>
+    <result column="l3_co2" property="l3Co2" jdbcType="DECIMAL"/>
+    <result column="l3_h2o" property="l3H2o" jdbcType="DECIMAL"/>
+    <result column="l3_cell_tmpr" property="l3CellTmpr" jdbcType="DECIMAL"/>
+    <result column="l3_cell_press" property="l3CellPress" jdbcType="DECIMAL"/>
+    <result column="l3_sample_flow" property="l3SampleFlow" jdbcType="DECIMAL"/>
+    <result column="l4_numsamples" property="l4Numsamples" jdbcType="DECIMAL"/>
+    <result column="l4_co2" property="l4Co2" jdbcType="DECIMAL"/>
+    <result column="l4_h2o" property="l4H2o" jdbcType="DECIMAL"/>
+    <result column="l4_cell_tmpr" property="l4CellTmpr" jdbcType="DECIMAL"/>
+    <result column="l4_cell_press" property="l4CellPress" jdbcType="DECIMAL"/>
+    <result column="l4_sample_flow" property="l4SampleFlow" jdbcType="DECIMAL"/>
+    <result column="l5_numsamples" property="l5Numsamples" jdbcType="DECIMAL"/>
+    <result column="l5_co2" property="l5Co2" jdbcType="DECIMAL"/>
+    <result column="l5_h2o" property="l5H2o" jdbcType="DECIMAL"/>
+    <result column="l5_cell_tmpr" property="l5CellTmpr" jdbcType="DECIMAL"/>
+    <result column="l5_cell_press" property="l5CellPress" jdbcType="DECIMAL"/>
+    <result column="l5_sample_flow" property="l5SampleFlow" jdbcType="DECIMAL"/>
+    <result column="l6_numsamples" property="l6Numsamples" jdbcType="DECIMAL"/>
+    <result column="l6_co2" property="l6Co2" jdbcType="DECIMAL"/>
+    <result column="l6_h2o" property="l6H2o" jdbcType="DECIMAL"/>
+    <result column="l6_cell_tmpr" property="l6CellTmpr" jdbcType="DECIMAL"/>
+    <result column="l6_cell_press" property="l6CellPress" jdbcType="DECIMAL"/>
+    <result column="l6_sample_flow" property="l6SampleFlow" jdbcType="DECIMAL"/>
+    <result column="l7_numsamples" property="l7Numsamples" jdbcType="DECIMAL"/>
+    <result column="l7_co2" property="l7Co2" jdbcType="DECIMAL"/>
+    <result column="l7_h2o" property="l7H2o" jdbcType="DECIMAL"/>
+    <result column="l7_cell_tmpr" property="l7CellTmpr" jdbcType="DECIMAL"/>
+    <result column="l7_cell_press" property="l7CellPress" jdbcType="DECIMAL"/>
+    <result column="l7_sample_flow" property="l7SampleFlow" jdbcType="DECIMAL"/>
+    <result column="l8_numsamples" property="l8Numsamples" jdbcType="DECIMAL"/>
+    <result column="l8_co2" property="l8Co2" jdbcType="DECIMAL"/>
+    <result column="l8_h2o" property="l8H2o" jdbcType="DECIMAL"/>
+    <result column="l8_cell_tmpr" property="l8CellTmpr" jdbcType="DECIMAL"/>
+    <result column="l8_cell_press" property="l8CellPress" jdbcType="DECIMAL"/>
+    <result column="l8_sample_flow" property="l8SampleFlow" jdbcType="DECIMAL"/>
+    <result column="pump_press_avg" property="pumpPressAvg" jdbcType="DECIMAL"/>
+    <result column="pump_control_avg" property="pumpControlAvg" jdbcType="DECIMAL"/>
+    <result column="pump_speed_avg" property="pumpSpeedAvg" jdbcType="DECIMAL"/>
+    <result column="pumptmprok_avg" property="pumptmprokAvg" jdbcType="DECIMAL"/>
+    <result column="pump_tmpr_avg" property="pumpTmprAvg" jdbcType="DECIMAL"/>
+    <result column="pump_heat_avg" property="pumpHeatAvg" jdbcType="DECIMAL"/>
+    <result column="pump_fan_avg" property="pumpFanAvg" jdbcType="DECIMAL"/>
+    <result column="valvetmprok_avg" property="valvetmprokAvg" jdbcType="DECIMAL"/>
+    <result column="valve_tmpr_avg" property="valveTmprAvg" jdbcType="DECIMAL"/>
+    <result column="valve_heat_avg" property="valveHeatAvg" jdbcType="DECIMAL"/>
+    <result column="valve_fan_avg" property="valveFanAvg" jdbcType="DECIMAL"/>
+    <result column="intake_heat_avg" property="intakeHeatAvg" jdbcType="DECIMAL"/>
+    <result column="batt_volt_avg" property="battVoltAvg" jdbcType="DECIMAL"/>
+    <result column="battvoltlow_avg" property="battvoltlowAvg" jdbcType="DECIMAL"/>
+    <result column="panel_tmpr_avg" property="panelTmprAvg" jdbcType="DECIMAL"/>
+    <result column="file_type" property="fileType" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collectorid, create_time, collect_frequency, record, timestamp, diag_ap200_avg, 
+    l1_numsamples, l1_co2, l1_h2o, l1_cell_tmpr, l1_cell_press, l1_sample_flow, l2_numsamples, 
+    l2_co2, l2_h2o, l2_cell_tmpr, l2_cell_press, l2_sample_flow, l3_numsamples, l3_co2, 
+    l3_h2o, l3_cell_tmpr, l3_cell_press, l3_sample_flow, l4_numsamples, l4_co2, l4_h2o, 
+    l4_cell_tmpr, l4_cell_press, l4_sample_flow, l5_numsamples, l5_co2, l5_h2o, l5_cell_tmpr, 
+    l5_cell_press, l5_sample_flow, l6_numsamples, l6_co2, l6_h2o, l6_cell_tmpr, l6_cell_press, 
+    l6_sample_flow, l7_numsamples, l7_co2, l7_h2o, l7_cell_tmpr, l7_cell_press, l7_sample_flow, 
+    l8_numsamples, l8_co2, l8_h2o, l8_cell_tmpr, l8_cell_press, l8_sample_flow, pump_press_avg, 
+    pump_control_avg, pump_speed_avg, pumptmprok_avg, pump_tmpr_avg, pump_heat_avg, pump_fan_avg, 
+    valvetmprok_avg, valve_tmpr_avg, valve_heat_avg, valve_fan_avg, intake_heat_avg, 
+    batt_volt_avg, battvoltlow_avg, panel_tmpr_avg, file_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_vapour_profile
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete
+    from plg_vapour_profile
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.PlgVapourProfile">
+    insert into plg_vapour_profile (id, collectorid, create_time,
+                                    collect_frequency, record, timestamp,
+                                    diag_ap200_avg, l1_numsamples, l1_co2,
+                                    l1_h2o, l1_cell_tmpr, l1_cell_press,
+                                    l1_sample_flow, l2_numsamples, l2_co2,
+                                    l2_h2o, l2_cell_tmpr, l2_cell_press,
+                                    l2_sample_flow, l3_numsamples, l3_co2,
+                                    l3_h2o, l3_cell_tmpr, l3_cell_press,
+                                    l3_sample_flow, l4_numsamples, l4_co2,
+                                    l4_h2o, l4_cell_tmpr, l4_cell_press,
+                                    l4_sample_flow, l5_numsamples, l5_co2,
+                                    l5_h2o, l5_cell_tmpr, l5_cell_press,
+                                    l5_sample_flow, l6_numsamples, l6_co2,
+                                    l6_h2o, l6_cell_tmpr, l6_cell_press,
+                                    l6_sample_flow, l7_numsamples, l7_co2,
+                                    l7_h2o, l7_cell_tmpr, l7_cell_press,
+                                    l7_sample_flow, l8_numsamples, l8_co2,
+                                    l8_h2o, l8_cell_tmpr, l8_cell_press,
+                                    l8_sample_flow, pump_press_avg, pump_control_avg,
+                                    pump_speed_avg, pumptmprok_avg, pump_tmpr_avg,
+                                    pump_heat_avg, pump_fan_avg, valvetmprok_avg,
+                                    valve_tmpr_avg, valve_heat_avg, valve_fan_avg,
+                                    intake_heat_avg, batt_volt_avg, battvoltlow_avg,
+                                    panel_tmpr_avg, file_type)
+    values (#{id,jdbcType=VARCHAR}, #{collectorid,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{collectFrequency,jdbcType=DECIMAL}, #{record,jdbcType=VARCHAR},
+            #{timestamp,jdbcType=TIMESTAMP},
+            #{diagAp200Avg,jdbcType=DECIMAL}, #{l1Numsamples,jdbcType=DECIMAL},
+            #{l1Co2,jdbcType=DECIMAL},
+            #{l1H2o,jdbcType=DECIMAL}, #{l1CellTmpr,jdbcType=DECIMAL},
+            #{l1CellPress,jdbcType=DECIMAL},
+            #{l1SampleFlow,jdbcType=DECIMAL}, #{l2Numsamples,jdbcType=DECIMAL},
+            #{l2Co2,jdbcType=DECIMAL},
+            #{l2H2o,jdbcType=DECIMAL}, #{l2CellTmpr,jdbcType=DECIMAL},
+            #{l2CellPress,jdbcType=DECIMAL},
+            #{l2SampleFlow,jdbcType=DECIMAL}, #{l3Numsamples,jdbcType=DECIMAL},
+            #{l3Co2,jdbcType=DECIMAL},
+            #{l3H2o,jdbcType=DECIMAL}, #{l3CellTmpr,jdbcType=DECIMAL},
+            #{l3CellPress,jdbcType=DECIMAL},
+            #{l3SampleFlow,jdbcType=DECIMAL}, #{l4Numsamples,jdbcType=DECIMAL},
+            #{l4Co2,jdbcType=DECIMAL},
+            #{l4H2o,jdbcType=DECIMAL}, #{l4CellTmpr,jdbcType=DECIMAL},
+            #{l4CellPress,jdbcType=DECIMAL},
+            #{l4SampleFlow,jdbcType=DECIMAL}, #{l5Numsamples,jdbcType=DECIMAL},
+            #{l5Co2,jdbcType=DECIMAL},
+            #{l5H2o,jdbcType=DECIMAL}, #{l5CellTmpr,jdbcType=DECIMAL},
+            #{l5CellPress,jdbcType=DECIMAL},
+            #{l5SampleFlow,jdbcType=DECIMAL}, #{l6Numsamples,jdbcType=DECIMAL},
+            #{l6Co2,jdbcType=DECIMAL},
+            #{l6H2o,jdbcType=DECIMAL}, #{l6CellTmpr,jdbcType=DECIMAL},
+            #{l6CellPress,jdbcType=DECIMAL},
+            #{l6SampleFlow,jdbcType=DECIMAL}, #{l7Numsamples,jdbcType=DECIMAL},
+            #{l7Co2,jdbcType=DECIMAL},
+            #{l7H2o,jdbcType=DECIMAL}, #{l7CellTmpr,jdbcType=DECIMAL},
+            #{l7CellPress,jdbcType=DECIMAL},
+            #{l7SampleFlow,jdbcType=DECIMAL}, #{l8Numsamples,jdbcType=DECIMAL},
+            #{l8Co2,jdbcType=DECIMAL},
+            #{l8H2o,jdbcType=DECIMAL}, #{l8CellTmpr,jdbcType=DECIMAL},
+            #{l8CellPress,jdbcType=DECIMAL},
+            #{l8SampleFlow,jdbcType=DECIMAL}, #{pumpPressAvg,jdbcType=DECIMAL},
+            #{pumpControlAvg,jdbcType=DECIMAL},
+            #{pumpSpeedAvg,jdbcType=DECIMAL}, #{pumptmprokAvg,jdbcType=DECIMAL},
+            #{pumpTmprAvg,jdbcType=DECIMAL},
+            #{pumpHeatAvg,jdbcType=DECIMAL}, #{pumpFanAvg,jdbcType=DECIMAL},
+            #{valvetmprokAvg,jdbcType=DECIMAL},
+            #{valveTmprAvg,jdbcType=DECIMAL}, #{valveHeatAvg,jdbcType=DECIMAL},
+            #{valveFanAvg,jdbcType=DECIMAL},
+            #{intakeHeatAvg,jdbcType=DECIMAL}, #{battVoltAvg,jdbcType=DECIMAL},
+            #{battvoltlowAvg,jdbcType=DECIMAL},
+            #{panelTmprAvg,jdbcType=DECIMAL}, #{fileType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.PlgVapourProfile">
+    insert into plg_vapour_profile
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectorid != null">
+        collectorid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="diagAp200Avg != null">
+        diag_ap200_avg,
+      </if>
+      <if test="l1Numsamples != null">
+        l1_numsamples,
+      </if>
+      <if test="l1Co2 != null">
+        l1_co2,
+      </if>
+      <if test="l1H2o != null">
+        l1_h2o,
+      </if>
+      <if test="l1CellTmpr != null">
+        l1_cell_tmpr,
+      </if>
+      <if test="l1CellPress != null">
+        l1_cell_press,
+      </if>
+      <if test="l1SampleFlow != null">
+        l1_sample_flow,
+      </if>
+      <if test="l2Numsamples != null">
+        l2_numsamples,
+      </if>
+      <if test="l2Co2 != null">
+        l2_co2,
+      </if>
+      <if test="l2H2o != null">
+        l2_h2o,
+      </if>
+      <if test="l2CellTmpr != null">
+        l2_cell_tmpr,
+      </if>
+      <if test="l2CellPress != null">
+        l2_cell_press,
+      </if>
+      <if test="l2SampleFlow != null">
+        l2_sample_flow,
+      </if>
+      <if test="l3Numsamples != null">
+        l3_numsamples,
+      </if>
+      <if test="l3Co2 != null">
+        l3_co2,
+      </if>
+      <if test="l3H2o != null">
+        l3_h2o,
+      </if>
+      <if test="l3CellTmpr != null">
+        l3_cell_tmpr,
+      </if>
+      <if test="l3CellPress != null">
+        l3_cell_press,
+      </if>
+      <if test="l3SampleFlow != null">
+        l3_sample_flow,
+      </if>
+      <if test="l4Numsamples != null">
+        l4_numsamples,
+      </if>
+      <if test="l4Co2 != null">
+        l4_co2,
+      </if>
+      <if test="l4H2o != null">
+        l4_h2o,
+      </if>
+      <if test="l4CellTmpr != null">
+        l4_cell_tmpr,
+      </if>
+      <if test="l4CellPress != null">
+        l4_cell_press,
+      </if>
+      <if test="l4SampleFlow != null">
+        l4_sample_flow,
+      </if>
+      <if test="l5Numsamples != null">
+        l5_numsamples,
+      </if>
+      <if test="l5Co2 != null">
+        l5_co2,
+      </if>
+      <if test="l5H2o != null">
+        l5_h2o,
+      </if>
+      <if test="l5CellTmpr != null">
+        l5_cell_tmpr,
+      </if>
+      <if test="l5CellPress != null">
+        l5_cell_press,
+      </if>
+      <if test="l5SampleFlow != null">
+        l5_sample_flow,
+      </if>
+      <if test="l6Numsamples != null">
+        l6_numsamples,
+      </if>
+      <if test="l6Co2 != null">
+        l6_co2,
+      </if>
+      <if test="l6H2o != null">
+        l6_h2o,
+      </if>
+      <if test="l6CellTmpr != null">
+        l6_cell_tmpr,
+      </if>
+      <if test="l6CellPress != null">
+        l6_cell_press,
+      </if>
+      <if test="l6SampleFlow != null">
+        l6_sample_flow,
+      </if>
+      <if test="l7Numsamples != null">
+        l7_numsamples,
+      </if>
+      <if test="l7Co2 != null">
+        l7_co2,
+      </if>
+      <if test="l7H2o != null">
+        l7_h2o,
+      </if>
+      <if test="l7CellTmpr != null">
+        l7_cell_tmpr,
+      </if>
+      <if test="l7CellPress != null">
+        l7_cell_press,
+      </if>
+      <if test="l7SampleFlow != null">
+        l7_sample_flow,
+      </if>
+      <if test="l8Numsamples != null">
+        l8_numsamples,
+      </if>
+      <if test="l8Co2 != null">
+        l8_co2,
+      </if>
+      <if test="l8H2o != null">
+        l8_h2o,
+      </if>
+      <if test="l8CellTmpr != null">
+        l8_cell_tmpr,
+      </if>
+      <if test="l8CellPress != null">
+        l8_cell_press,
+      </if>
+      <if test="l8SampleFlow != null">
+        l8_sample_flow,
+      </if>
+      <if test="pumpPressAvg != null">
+        pump_press_avg,
+      </if>
+      <if test="pumpControlAvg != null">
+        pump_control_avg,
+      </if>
+      <if test="pumpSpeedAvg != null">
+        pump_speed_avg,
+      </if>
+      <if test="pumptmprokAvg != null">
+        pumptmprok_avg,
+      </if>
+      <if test="pumpTmprAvg != null">
+        pump_tmpr_avg,
+      </if>
+      <if test="pumpHeatAvg != null">
+        pump_heat_avg,
+      </if>
+      <if test="pumpFanAvg != null">
+        pump_fan_avg,
+      </if>
+      <if test="valvetmprokAvg != null">
+        valvetmprok_avg,
+      </if>
+      <if test="valveTmprAvg != null">
+        valve_tmpr_avg,
+      </if>
+      <if test="valveHeatAvg != null">
+        valve_heat_avg,
+      </if>
+      <if test="valveFanAvg != null">
+        valve_fan_avg,
+      </if>
+      <if test="intakeHeatAvg != null">
+        intake_heat_avg,
+      </if>
+      <if test="battVoltAvg != null">
+        batt_volt_avg,
+      </if>
+      <if test="battvoltlowAvg != null">
+        battvoltlow_avg,
+      </if>
+      <if test="panelTmprAvg != null">
+        panel_tmpr_avg,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorid != null">
+        #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="diagAp200Avg != null">
+        #{diagAp200Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="l1Numsamples != null">
+        #{l1Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l1Co2 != null">
+        #{l1Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l1H2o != null">
+        #{l1H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l1CellTmpr != null">
+        #{l1CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l1CellPress != null">
+        #{l1CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l1SampleFlow != null">
+        #{l1SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l2Numsamples != null">
+        #{l2Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l2Co2 != null">
+        #{l2Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l2H2o != null">
+        #{l2H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l2CellTmpr != null">
+        #{l2CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l2CellPress != null">
+        #{l2CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l2SampleFlow != null">
+        #{l2SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l3Numsamples != null">
+        #{l3Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l3Co2 != null">
+        #{l3Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l3H2o != null">
+        #{l3H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l3CellTmpr != null">
+        #{l3CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l3CellPress != null">
+        #{l3CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l3SampleFlow != null">
+        #{l3SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l4Numsamples != null">
+        #{l4Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l4Co2 != null">
+        #{l4Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l4H2o != null">
+        #{l4H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l4CellTmpr != null">
+        #{l4CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l4CellPress != null">
+        #{l4CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l4SampleFlow != null">
+        #{l4SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l5Numsamples != null">
+        #{l5Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l5Co2 != null">
+        #{l5Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l5H2o != null">
+        #{l5H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l5CellTmpr != null">
+        #{l5CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l5CellPress != null">
+        #{l5CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l5SampleFlow != null">
+        #{l5SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l6Numsamples != null">
+        #{l6Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l6Co2 != null">
+        #{l6Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l6H2o != null">
+        #{l6H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l6CellTmpr != null">
+        #{l6CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l6CellPress != null">
+        #{l6CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l6SampleFlow != null">
+        #{l6SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l7Numsamples != null">
+        #{l7Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l7Co2 != null">
+        #{l7Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l7H2o != null">
+        #{l7H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l7CellTmpr != null">
+        #{l7CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l7CellPress != null">
+        #{l7CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l7SampleFlow != null">
+        #{l7SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l8Numsamples != null">
+        #{l8Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l8Co2 != null">
+        #{l8Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l8H2o != null">
+        #{l8H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l8CellTmpr != null">
+        #{l8CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l8CellPress != null">
+        #{l8CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l8SampleFlow != null">
+        #{l8SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpPressAvg != null">
+        #{pumpPressAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpControlAvg != null">
+        #{pumpControlAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpSpeedAvg != null">
+        #{pumpSpeedAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumptmprokAvg != null">
+        #{pumptmprokAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpTmprAvg != null">
+        #{pumpTmprAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpHeatAvg != null">
+        #{pumpHeatAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpFanAvg != null">
+        #{pumpFanAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="valvetmprokAvg != null">
+        #{valvetmprokAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="valveTmprAvg != null">
+        #{valveTmprAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="valveHeatAvg != null">
+        #{valveHeatAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="valveFanAvg != null">
+        #{valveFanAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="intakeHeatAvg != null">
+        #{intakeHeatAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="battVoltAvg != null">
+        #{battVoltAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="battvoltlowAvg != null">
+        #{battvoltlowAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="panelTmprAvg != null">
+        #{panelTmprAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.PlgVapourProfile">
+    update plg_vapour_profile
+    <set>
+      <if test="collectorid != null">
+        collectorid = #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="diagAp200Avg != null">
+        diag_ap200_avg = #{diagAp200Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="l1Numsamples != null">
+        l1_numsamples = #{l1Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l1Co2 != null">
+        l1_co2 = #{l1Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l1H2o != null">
+        l1_h2o = #{l1H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l1CellTmpr != null">
+        l1_cell_tmpr = #{l1CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l1CellPress != null">
+        l1_cell_press = #{l1CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l1SampleFlow != null">
+        l1_sample_flow = #{l1SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l2Numsamples != null">
+        l2_numsamples = #{l2Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l2Co2 != null">
+        l2_co2 = #{l2Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l2H2o != null">
+        l2_h2o = #{l2H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l2CellTmpr != null">
+        l2_cell_tmpr = #{l2CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l2CellPress != null">
+        l2_cell_press = #{l2CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l2SampleFlow != null">
+        l2_sample_flow = #{l2SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l3Numsamples != null">
+        l3_numsamples = #{l3Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l3Co2 != null">
+        l3_co2 = #{l3Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l3H2o != null">
+        l3_h2o = #{l3H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l3CellTmpr != null">
+        l3_cell_tmpr = #{l3CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l3CellPress != null">
+        l3_cell_press = #{l3CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l3SampleFlow != null">
+        l3_sample_flow = #{l3SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l4Numsamples != null">
+        l4_numsamples = #{l4Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l4Co2 != null">
+        l4_co2 = #{l4Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l4H2o != null">
+        l4_h2o = #{l4H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l4CellTmpr != null">
+        l4_cell_tmpr = #{l4CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l4CellPress != null">
+        l4_cell_press = #{l4CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l4SampleFlow != null">
+        l4_sample_flow = #{l4SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l5Numsamples != null">
+        l5_numsamples = #{l5Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l5Co2 != null">
+        l5_co2 = #{l5Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l5H2o != null">
+        l5_h2o = #{l5H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l5CellTmpr != null">
+        l5_cell_tmpr = #{l5CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l5CellPress != null">
+        l5_cell_press = #{l5CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l5SampleFlow != null">
+        l5_sample_flow = #{l5SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l6Numsamples != null">
+        l6_numsamples = #{l6Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l6Co2 != null">
+        l6_co2 = #{l6Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l6H2o != null">
+        l6_h2o = #{l6H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l6CellTmpr != null">
+        l6_cell_tmpr = #{l6CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l6CellPress != null">
+        l6_cell_press = #{l6CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l6SampleFlow != null">
+        l6_sample_flow = #{l6SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l7Numsamples != null">
+        l7_numsamples = #{l7Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l7Co2 != null">
+        l7_co2 = #{l7Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l7H2o != null">
+        l7_h2o = #{l7H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l7CellTmpr != null">
+        l7_cell_tmpr = #{l7CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l7CellPress != null">
+        l7_cell_press = #{l7CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l7SampleFlow != null">
+        l7_sample_flow = #{l7SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="l8Numsamples != null">
+        l8_numsamples = #{l8Numsamples,jdbcType=DECIMAL},
+      </if>
+      <if test="l8Co2 != null">
+        l8_co2 = #{l8Co2,jdbcType=DECIMAL},
+      </if>
+      <if test="l8H2o != null">
+        l8_h2o = #{l8H2o,jdbcType=DECIMAL},
+      </if>
+      <if test="l8CellTmpr != null">
+        l8_cell_tmpr = #{l8CellTmpr,jdbcType=DECIMAL},
+      </if>
+      <if test="l8CellPress != null">
+        l8_cell_press = #{l8CellPress,jdbcType=DECIMAL},
+      </if>
+      <if test="l8SampleFlow != null">
+        l8_sample_flow = #{l8SampleFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpPressAvg != null">
+        pump_press_avg = #{pumpPressAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpControlAvg != null">
+        pump_control_avg = #{pumpControlAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpSpeedAvg != null">
+        pump_speed_avg = #{pumpSpeedAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumptmprokAvg != null">
+        pumptmprok_avg = #{pumptmprokAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpTmprAvg != null">
+        pump_tmpr_avg = #{pumpTmprAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpHeatAvg != null">
+        pump_heat_avg = #{pumpHeatAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pumpFanAvg != null">
+        pump_fan_avg = #{pumpFanAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="valvetmprokAvg != null">
+        valvetmprok_avg = #{valvetmprokAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="valveTmprAvg != null">
+        valve_tmpr_avg = #{valveTmprAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="valveHeatAvg != null">
+        valve_heat_avg = #{valveHeatAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="valveFanAvg != null">
+        valve_fan_avg = #{valveFanAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="intakeHeatAvg != null">
+        intake_heat_avg = #{intakeHeatAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="battVoltAvg != null">
+        batt_volt_avg = #{battVoltAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="battvoltlowAvg != null">
+        battvoltlow_avg = #{battvoltlowAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="panelTmprAvg != null">
+        panel_tmpr_avg = #{panelTmprAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.PlgVapourProfile">
+    update plg_vapour_profile
+    set collectorid       = #{collectorid,jdbcType=VARCHAR},
+        create_time       = #{createTime,jdbcType=TIMESTAMP},
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+        record            = #{record,jdbcType=VARCHAR},
+        timestamp         = #{timestamp,jdbcType=TIMESTAMP},
+        diag_ap200_avg    = #{diagAp200Avg,jdbcType=DECIMAL},
+        l1_numsamples     = #{l1Numsamples,jdbcType=DECIMAL},
+        l1_co2            = #{l1Co2,jdbcType=DECIMAL},
+        l1_h2o            = #{l1H2o,jdbcType=DECIMAL},
+        l1_cell_tmpr      = #{l1CellTmpr,jdbcType=DECIMAL},
+        l1_cell_press     = #{l1CellPress,jdbcType=DECIMAL},
+        l1_sample_flow    = #{l1SampleFlow,jdbcType=DECIMAL},
+        l2_numsamples     = #{l2Numsamples,jdbcType=DECIMAL},
+        l2_co2            = #{l2Co2,jdbcType=DECIMAL},
+        l2_h2o            = #{l2H2o,jdbcType=DECIMAL},
+        l2_cell_tmpr      = #{l2CellTmpr,jdbcType=DECIMAL},
+        l2_cell_press     = #{l2CellPress,jdbcType=DECIMAL},
+        l2_sample_flow    = #{l2SampleFlow,jdbcType=DECIMAL},
+        l3_numsamples     = #{l3Numsamples,jdbcType=DECIMAL},
+        l3_co2            = #{l3Co2,jdbcType=DECIMAL},
+        l3_h2o            = #{l3H2o,jdbcType=DECIMAL},
+        l3_cell_tmpr      = #{l3CellTmpr,jdbcType=DECIMAL},
+        l3_cell_press     = #{l3CellPress,jdbcType=DECIMAL},
+        l3_sample_flow    = #{l3SampleFlow,jdbcType=DECIMAL},
+        l4_numsamples     = #{l4Numsamples,jdbcType=DECIMAL},
+        l4_co2            = #{l4Co2,jdbcType=DECIMAL},
+        l4_h2o            = #{l4H2o,jdbcType=DECIMAL},
+        l4_cell_tmpr      = #{l4CellTmpr,jdbcType=DECIMAL},
+        l4_cell_press     = #{l4CellPress,jdbcType=DECIMAL},
+        l4_sample_flow    = #{l4SampleFlow,jdbcType=DECIMAL},
+        l5_numsamples     = #{l5Numsamples,jdbcType=DECIMAL},
+        l5_co2            = #{l5Co2,jdbcType=DECIMAL},
+        l5_h2o            = #{l5H2o,jdbcType=DECIMAL},
+        l5_cell_tmpr      = #{l5CellTmpr,jdbcType=DECIMAL},
+        l5_cell_press     = #{l5CellPress,jdbcType=DECIMAL},
+        l5_sample_flow    = #{l5SampleFlow,jdbcType=DECIMAL},
+        l6_numsamples     = #{l6Numsamples,jdbcType=DECIMAL},
+        l6_co2            = #{l6Co2,jdbcType=DECIMAL},
+        l6_h2o            = #{l6H2o,jdbcType=DECIMAL},
+        l6_cell_tmpr      = #{l6CellTmpr,jdbcType=DECIMAL},
+        l6_cell_press     = #{l6CellPress,jdbcType=DECIMAL},
+        l6_sample_flow    = #{l6SampleFlow,jdbcType=DECIMAL},
+        l7_numsamples     = #{l7Numsamples,jdbcType=DECIMAL},
+        l7_co2            = #{l7Co2,jdbcType=DECIMAL},
+        l7_h2o            = #{l7H2o,jdbcType=DECIMAL},
+        l7_cell_tmpr      = #{l7CellTmpr,jdbcType=DECIMAL},
+        l7_cell_press     = #{l7CellPress,jdbcType=DECIMAL},
+        l7_sample_flow    = #{l7SampleFlow,jdbcType=DECIMAL},
+        l8_numsamples     = #{l8Numsamples,jdbcType=DECIMAL},
+        l8_co2            = #{l8Co2,jdbcType=DECIMAL},
+        l8_h2o            = #{l8H2o,jdbcType=DECIMAL},
+        l8_cell_tmpr      = #{l8CellTmpr,jdbcType=DECIMAL},
+        l8_cell_press     = #{l8CellPress,jdbcType=DECIMAL},
+        l8_sample_flow    = #{l8SampleFlow,jdbcType=DECIMAL},
+        pump_press_avg    = #{pumpPressAvg,jdbcType=DECIMAL},
+        pump_control_avg  = #{pumpControlAvg,jdbcType=DECIMAL},
+        pump_speed_avg    = #{pumpSpeedAvg,jdbcType=DECIMAL},
+        pumptmprok_avg    = #{pumptmprokAvg,jdbcType=DECIMAL},
+        pump_tmpr_avg     = #{pumpTmprAvg,jdbcType=DECIMAL},
+        pump_heat_avg     = #{pumpHeatAvg,jdbcType=DECIMAL},
+        pump_fan_avg      = #{pumpFanAvg,jdbcType=DECIMAL},
+        valvetmprok_avg   = #{valvetmprokAvg,jdbcType=DECIMAL},
+        valve_tmpr_avg    = #{valveTmprAvg,jdbcType=DECIMAL},
+        valve_heat_avg    = #{valveHeatAvg,jdbcType=DECIMAL},
+        valve_fan_avg     = #{valveFanAvg,jdbcType=DECIMAL},
+        intake_heat_avg   = #{intakeHeatAvg,jdbcType=DECIMAL},
+        batt_volt_avg     = #{battVoltAvg,jdbcType=DECIMAL},
+        battvoltlow_avg   = #{battvoltlowAvg,jdbcType=DECIMAL},
+        panel_tmpr_avg    = #{panelTmprAvg,jdbcType=DECIMAL},
+        file_type         = #{fileType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

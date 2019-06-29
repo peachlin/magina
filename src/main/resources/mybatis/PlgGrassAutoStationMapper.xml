@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.PlgGrassAutoStationMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.PlgGrassAutoStation">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="collectorid" property="collectorid" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="collect_frequency" property="collectFrequency" jdbcType="DECIMAL"/>
+    <result column="timestamp" property="timestamp" jdbcType="TIMESTAMP"/>
+    <result column="record" property="record" jdbcType="DECIMAL"/>
+    <result column="batt_volt_min" property="battVoltMin" jdbcType="DECIMAL"/>
+    <result column="ptemp" property="ptemp" jdbcType="DECIMAL"/>
+    <result column="ws_10m_avg" property="ws10mAvg" jdbcType="DECIMAL"/>
+    <result column="ws_10m" property="ws10m" jdbcType="DECIMAL"/>
+    <result column="wd" property="wd" jdbcType="DECIMAL"/>
+    <result column="temp_10m_avg" property="temp10mAvg" jdbcType="DECIMAL"/>
+    <result column="temp_2m_avg" property="temp2mAvg" jdbcType="DECIMAL"/>
+    <result column="rh_10m_avg" property="rh10mAvg" jdbcType="DECIMAL"/>
+    <result column="rh_2m_avg" property="rh2mAvg" jdbcType="DECIMAL"/>
+    <result column="vapor_10m_avg" property="vapor10mAvg" jdbcType="DECIMAL"/>
+    <result column="vapor_2m_avg" property="vapor2mAvg" jdbcType="DECIMAL"/>
+    <result column="short_wave_d_avg" property="shortWaveDAvg" jdbcType="DECIMAL"/>
+    <result column="short_wave_u_avg" property="shortWaveUAvg" jdbcType="DECIMAL"/>
+    <result column="long_wave_d_avg" property="longWaveDAvg" jdbcType="DECIMAL"/>
+    <result column="long_wave_u_avg" property="longWaveUAvg" jdbcType="DECIMAL"/>
+    <result column="net_tot_avg" property="netTotAvg" jdbcType="DECIMAL"/>
+    <result column="nr01tc_avg" property="nr01tcAvg" jdbcType="DECIMAL"/>
+    <result column="albedo_nr01_avg" property="albedoNr01Avg" jdbcType="DECIMAL"/>
+    <result column="rain_mm_tot" property="rainMmTot" jdbcType="DECIMAL"/>
+    <result column="p" property="p" jdbcType="DECIMAL"/>
+    <result column="hsoil_tc_10cm" property="hsoilTc10cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tk_10cm" property="hsoilTk10cm" jdbcType="DECIMAL"/>
+    <result column="soil_moisture_10cm" property="soilMoisture10cm" jdbcType="DECIMAL"/>
+    <result column="soil_cond_10cm" property="soilCond10cm" jdbcType="DECIMAL"/>
+    <result column="soil_dlt_10cm" property="soilDlt10cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tc_20cm" property="hsoilTc20cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tk_20cm" property="hsoilTk20cm" jdbcType="DECIMAL"/>
+    <result column="soil_moisture_20cm" property="soilMoisture20cm" jdbcType="DECIMAL"/>
+    <result column="soil_cond_20cm" property="soilCond20cm" jdbcType="DECIMAL"/>
+    <result column="soil_dlt_20cm" property="soilDlt20cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tc_30cm" property="hsoilTc30cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tk_30cm" property="hsoilTk30cm" jdbcType="DECIMAL"/>
+    <result column="soil_moisture_30cm" property="soilMoisture30cm" jdbcType="DECIMAL"/>
+    <result column="soil_cond_30cm" property="soilCond30cm" jdbcType="DECIMAL"/>
+    <result column="soil_dlt_30cm" property="soilDlt30cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tc_40cm" property="hsoilTc40cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tk_40cm" property="hsoilTk40cm" jdbcType="DECIMAL"/>
+    <result column="soil_moisture_40cm" property="soilMoisture40cm" jdbcType="DECIMAL"/>
+    <result column="soil_cond_40cm" property="soilCond40cm" jdbcType="DECIMAL"/>
+    <result column="soil_dlt_40cm" property="soilDlt40cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tc_60cm" property="hsoilTc60cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tk_60cm" property="hsoilTk60cm" jdbcType="DECIMAL"/>
+    <result column="soil_moisture_60cm" property="soilMoisture60cm" jdbcType="DECIMAL"/>
+    <result column="soil_cond_60cm" property="soilCond60cm" jdbcType="DECIMAL"/>
+    <result column="soil_dlt_60cm" property="soilDlt60cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tc_80cm" property="hsoilTc80cm" jdbcType="DECIMAL"/>
+    <result column="hsoil_tk_80cm" property="hsoilTk80cm" jdbcType="DECIMAL"/>
+    <result column="soil_moisture_80cm" property="soilMoisture80cm" jdbcType="DECIMAL"/>
+    <result column="soil_cond_80cm" property="soilCond80cm" jdbcType="DECIMAL"/>
+    <result column="soil_dlt_80cm" property="soilDlt80cm" jdbcType="DECIMAL"/>
+    <result column="soil_g_l_avg" property="soilGLAvg" jdbcType="DECIMAL"/>
+    <result column="soil_g_r_avg" property="soilGRAvg" jdbcType="DECIMAL"/>
+    <result column="snow_depth" property="snowDepth" jdbcType="DECIMAL"/>
+    <result column="signalquality" property="signalquality" jdbcType="DECIMAL"/>
+    <result column="targettc_0cm_avg" property="targettc0cmAvg" jdbcType="DECIMAL"/>
+    <result column="file_type" property="fileType" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collectorid, create_time, collect_frequency, timestamp, record, batt_volt_min, 
+    ptemp, ws_10m_avg, ws_10m, wd, temp_10m_avg, temp_2m_avg, rh_10m_avg, rh_2m_avg, 
+    vapor_10m_avg, vapor_2m_avg, short_wave_d_avg, short_wave_u_avg, long_wave_d_avg, 
+    long_wave_u_avg, net_tot_avg, nr01tc_avg, albedo_nr01_avg, rain_mm_tot, p, hsoil_tc_10cm, 
+    hsoil_tk_10cm, soil_moisture_10cm, soil_cond_10cm, soil_dlt_10cm, hsoil_tc_20cm, 
+    hsoil_tk_20cm, soil_moisture_20cm, soil_cond_20cm, soil_dlt_20cm, hsoil_tc_30cm, 
+    hsoil_tk_30cm, soil_moisture_30cm, soil_cond_30cm, soil_dlt_30cm, hsoil_tc_40cm, 
+    hsoil_tk_40cm, soil_moisture_40cm, soil_cond_40cm, soil_dlt_40cm, hsoil_tc_60cm, 
+    hsoil_tk_60cm, soil_moisture_60cm, soil_cond_60cm, soil_dlt_60cm, hsoil_tc_80cm, 
+    hsoil_tk_80cm, soil_moisture_80cm, soil_cond_80cm, soil_dlt_80cm, soil_g_l_avg, soil_g_r_avg, 
+    snow_depth, signalquality, targettc_0cm_avg, file_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_grass_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete
+    from plg_grass_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.PlgGrassAutoStation">
+    insert into plg_grass_auto_station (id, collectorid, create_time,
+                                        collect_frequency, timestamp, record,
+                                        batt_volt_min, ptemp, ws_10m_avg,
+                                        ws_10m, wd, temp_10m_avg,
+                                        temp_2m_avg, rh_10m_avg, rh_2m_avg,
+                                        vapor_10m_avg, vapor_2m_avg, short_wave_d_avg,
+                                        short_wave_u_avg, long_wave_d_avg, long_wave_u_avg,
+                                        net_tot_avg, nr01tc_avg, albedo_nr01_avg,
+                                        rain_mm_tot, p, hsoil_tc_10cm,
+                                        hsoil_tk_10cm, soil_moisture_10cm, soil_cond_10cm,
+                                        soil_dlt_10cm, hsoil_tc_20cm, hsoil_tk_20cm,
+                                        soil_moisture_20cm, soil_cond_20cm, soil_dlt_20cm,
+                                        hsoil_tc_30cm, hsoil_tk_30cm, soil_moisture_30cm,
+                                        soil_cond_30cm, soil_dlt_30cm, hsoil_tc_40cm,
+                                        hsoil_tk_40cm, soil_moisture_40cm, soil_cond_40cm,
+                                        soil_dlt_40cm, hsoil_tc_60cm, hsoil_tk_60cm,
+                                        soil_moisture_60cm, soil_cond_60cm, soil_dlt_60cm,
+                                        hsoil_tc_80cm, hsoil_tk_80cm, soil_moisture_80cm,
+                                        soil_cond_80cm, soil_dlt_80cm, soil_g_l_avg,
+                                        soil_g_r_avg, snow_depth, signalquality,
+                                        targettc_0cm_avg, file_type)
+    values (#{id,jdbcType=VARCHAR}, #{collectorid,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{collectFrequency,jdbcType=DECIMAL}, #{timestamp,jdbcType=TIMESTAMP},
+            #{record,jdbcType=DECIMAL},
+            #{battVoltMin,jdbcType=DECIMAL}, #{ptemp,jdbcType=DECIMAL},
+            #{ws10mAvg,jdbcType=DECIMAL},
+            #{ws10m,jdbcType=DECIMAL}, #{wd,jdbcType=DECIMAL}, #{temp10mAvg,jdbcType=DECIMAL},
+            #{temp2mAvg,jdbcType=DECIMAL}, #{rh10mAvg,jdbcType=DECIMAL},
+            #{rh2mAvg,jdbcType=DECIMAL},
+            #{vapor10mAvg,jdbcType=DECIMAL}, #{vapor2mAvg,jdbcType=DECIMAL},
+            #{shortWaveDAvg,jdbcType=DECIMAL},
+            #{shortWaveUAvg,jdbcType=DECIMAL}, #{longWaveDAvg,jdbcType=DECIMAL},
+            #{longWaveUAvg,jdbcType=DECIMAL},
+            #{netTotAvg,jdbcType=DECIMAL}, #{nr01tcAvg,jdbcType=DECIMAL},
+            #{albedoNr01Avg,jdbcType=DECIMAL},
+            #{rainMmTot,jdbcType=DECIMAL}, #{p,jdbcType=DECIMAL}, #{hsoilTc10cm,jdbcType=DECIMAL},
+            #{hsoilTk10cm,jdbcType=DECIMAL}, #{soilMoisture10cm,jdbcType=DECIMAL},
+            #{soilCond10cm,jdbcType=DECIMAL},
+            #{soilDlt10cm,jdbcType=DECIMAL}, #{hsoilTc20cm,jdbcType=DECIMAL},
+            #{hsoilTk20cm,jdbcType=DECIMAL},
+            #{soilMoisture20cm,jdbcType=DECIMAL}, #{soilCond20cm,jdbcType=DECIMAL},
+            #{soilDlt20cm,jdbcType=DECIMAL},
+            #{hsoilTc30cm,jdbcType=DECIMAL}, #{hsoilTk30cm,jdbcType=DECIMAL},
+            #{soilMoisture30cm,jdbcType=DECIMAL},
+            #{soilCond30cm,jdbcType=DECIMAL}, #{soilDlt30cm,jdbcType=DECIMAL},
+            #{hsoilTc40cm,jdbcType=DECIMAL},
+            #{hsoilTk40cm,jdbcType=DECIMAL}, #{soilMoisture40cm,jdbcType=DECIMAL},
+            #{soilCond40cm,jdbcType=DECIMAL},
+            #{soilDlt40cm,jdbcType=DECIMAL}, #{hsoilTc60cm,jdbcType=DECIMAL},
+            #{hsoilTk60cm,jdbcType=DECIMAL},
+            #{soilMoisture60cm,jdbcType=DECIMAL}, #{soilCond60cm,jdbcType=DECIMAL},
+            #{soilDlt60cm,jdbcType=DECIMAL},
+            #{hsoilTc80cm,jdbcType=DECIMAL}, #{hsoilTk80cm,jdbcType=DECIMAL},
+            #{soilMoisture80cm,jdbcType=DECIMAL},
+            #{soilCond80cm,jdbcType=DECIMAL}, #{soilDlt80cm,jdbcType=DECIMAL},
+            #{soilGLAvg,jdbcType=DECIMAL},
+            #{soilGRAvg,jdbcType=DECIMAL}, #{snowDepth,jdbcType=DECIMAL},
+            #{signalquality,jdbcType=DECIMAL},
+            #{targettc0cmAvg,jdbcType=DECIMAL}, #{fileType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.PlgGrassAutoStation">
+    insert into plg_grass_auto_station
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectorid != null">
+        collectorid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="battVoltMin != null">
+        batt_volt_min,
+      </if>
+      <if test="ptemp != null">
+        ptemp,
+      </if>
+      <if test="ws10mAvg != null">
+        ws_10m_avg,
+      </if>
+      <if test="ws10m != null">
+        ws_10m,
+      </if>
+      <if test="wd != null">
+        wd,
+      </if>
+      <if test="temp10mAvg != null">
+        temp_10m_avg,
+      </if>
+      <if test="temp2mAvg != null">
+        temp_2m_avg,
+      </if>
+      <if test="rh10mAvg != null">
+        rh_10m_avg,
+      </if>
+      <if test="rh2mAvg != null">
+        rh_2m_avg,
+      </if>
+      <if test="vapor10mAvg != null">
+        vapor_10m_avg,
+      </if>
+      <if test="vapor2mAvg != null">
+        vapor_2m_avg,
+      </if>
+      <if test="shortWaveDAvg != null">
+        short_wave_d_avg,
+      </if>
+      <if test="shortWaveUAvg != null">
+        short_wave_u_avg,
+      </if>
+      <if test="longWaveDAvg != null">
+        long_wave_d_avg,
+      </if>
+      <if test="longWaveUAvg != null">
+        long_wave_u_avg,
+      </if>
+      <if test="netTotAvg != null">
+        net_tot_avg,
+      </if>
+      <if test="nr01tcAvg != null">
+        nr01tc_avg,
+      </if>
+      <if test="albedoNr01Avg != null">
+        albedo_nr01_avg,
+      </if>
+      <if test="rainMmTot != null">
+        rain_mm_tot,
+      </if>
+      <if test="p != null">
+        p,
+      </if>
+      <if test="hsoilTc10cm != null">
+        hsoil_tc_10cm,
+      </if>
+      <if test="hsoilTk10cm != null">
+        hsoil_tk_10cm,
+      </if>
+      <if test="soilMoisture10cm != null">
+        soil_moisture_10cm,
+      </if>
+      <if test="soilCond10cm != null">
+        soil_cond_10cm,
+      </if>
+      <if test="soilDlt10cm != null">
+        soil_dlt_10cm,
+      </if>
+      <if test="hsoilTc20cm != null">
+        hsoil_tc_20cm,
+      </if>
+      <if test="hsoilTk20cm != null">
+        hsoil_tk_20cm,
+      </if>
+      <if test="soilMoisture20cm != null">
+        soil_moisture_20cm,
+      </if>
+      <if test="soilCond20cm != null">
+        soil_cond_20cm,
+      </if>
+      <if test="soilDlt20cm != null">
+        soil_dlt_20cm,
+      </if>
+      <if test="hsoilTc30cm != null">
+        hsoil_tc_30cm,
+      </if>
+      <if test="hsoilTk30cm != null">
+        hsoil_tk_30cm,
+      </if>
+      <if test="soilMoisture30cm != null">
+        soil_moisture_30cm,
+      </if>
+      <if test="soilCond30cm != null">
+        soil_cond_30cm,
+      </if>
+      <if test="soilDlt30cm != null">
+        soil_dlt_30cm,
+      </if>
+      <if test="hsoilTc40cm != null">
+        hsoil_tc_40cm,
+      </if>
+      <if test="hsoilTk40cm != null">
+        hsoil_tk_40cm,
+      </if>
+      <if test="soilMoisture40cm != null">
+        soil_moisture_40cm,
+      </if>
+      <if test="soilCond40cm != null">
+        soil_cond_40cm,
+      </if>
+      <if test="soilDlt40cm != null">
+        soil_dlt_40cm,
+      </if>
+      <if test="hsoilTc60cm != null">
+        hsoil_tc_60cm,
+      </if>
+      <if test="hsoilTk60cm != null">
+        hsoil_tk_60cm,
+      </if>
+      <if test="soilMoisture60cm != null">
+        soil_moisture_60cm,
+      </if>
+      <if test="soilCond60cm != null">
+        soil_cond_60cm,
+      </if>
+      <if test="soilDlt60cm != null">
+        soil_dlt_60cm,
+      </if>
+      <if test="hsoilTc80cm != null">
+        hsoil_tc_80cm,
+      </if>
+      <if test="hsoilTk80cm != null">
+        hsoil_tk_80cm,
+      </if>
+      <if test="soilMoisture80cm != null">
+        soil_moisture_80cm,
+      </if>
+      <if test="soilCond80cm != null">
+        soil_cond_80cm,
+      </if>
+      <if test="soilDlt80cm != null">
+        soil_dlt_80cm,
+      </if>
+      <if test="soilGLAvg != null">
+        soil_g_l_avg,
+      </if>
+      <if test="soilGRAvg != null">
+        soil_g_r_avg,
+      </if>
+      <if test="snowDepth != null">
+        snow_depth,
+      </if>
+      <if test="signalquality != null">
+        signalquality,
+      </if>
+      <if test="targettc0cmAvg != null">
+        targettc_0cm_avg,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorid != null">
+        #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="battVoltMin != null">
+        #{battVoltMin,jdbcType=DECIMAL},
+      </if>
+      <if test="ptemp != null">
+        #{ptemp,jdbcType=DECIMAL},
+      </if>
+      <if test="ws10mAvg != null">
+        #{ws10mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ws10m != null">
+        #{ws10m,jdbcType=DECIMAL},
+      </if>
+      <if test="wd != null">
+        #{wd,jdbcType=DECIMAL},
+      </if>
+      <if test="temp10mAvg != null">
+        #{temp10mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="temp2mAvg != null">
+        #{temp2mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rh10mAvg != null">
+        #{rh10mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rh2mAvg != null">
+        #{rh2mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vapor10mAvg != null">
+        #{vapor10mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vapor2mAvg != null">
+        #{vapor2mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="shortWaveDAvg != null">
+        #{shortWaveDAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="shortWaveUAvg != null">
+        #{shortWaveUAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="longWaveDAvg != null">
+        #{longWaveDAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="longWaveUAvg != null">
+        #{longWaveUAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="netTotAvg != null">
+        #{netTotAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="nr01tcAvg != null">
+        #{nr01tcAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="albedoNr01Avg != null">
+        #{albedoNr01Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="rainMmTot != null">
+        #{rainMmTot,jdbcType=DECIMAL},
+      </if>
+      <if test="p != null">
+        #{p,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc10cm != null">
+        #{hsoilTc10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk10cm != null">
+        #{hsoilTk10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture10cm != null">
+        #{soilMoisture10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond10cm != null">
+        #{soilCond10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt10cm != null">
+        #{soilDlt10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc20cm != null">
+        #{hsoilTc20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk20cm != null">
+        #{hsoilTk20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture20cm != null">
+        #{soilMoisture20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond20cm != null">
+        #{soilCond20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt20cm != null">
+        #{soilDlt20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc30cm != null">
+        #{hsoilTc30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk30cm != null">
+        #{hsoilTk30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture30cm != null">
+        #{soilMoisture30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond30cm != null">
+        #{soilCond30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt30cm != null">
+        #{soilDlt30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc40cm != null">
+        #{hsoilTc40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk40cm != null">
+        #{hsoilTk40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture40cm != null">
+        #{soilMoisture40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond40cm != null">
+        #{soilCond40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt40cm != null">
+        #{soilDlt40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc60cm != null">
+        #{hsoilTc60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk60cm != null">
+        #{hsoilTk60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture60cm != null">
+        #{soilMoisture60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond60cm != null">
+        #{soilCond60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt60cm != null">
+        #{soilDlt60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc80cm != null">
+        #{hsoilTc80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk80cm != null">
+        #{hsoilTk80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture80cm != null">
+        #{soilMoisture80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond80cm != null">
+        #{soilCond80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt80cm != null">
+        #{soilDlt80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilGLAvg != null">
+        #{soilGLAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="soilGRAvg != null">
+        #{soilGRAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="snowDepth != null">
+        #{snowDepth,jdbcType=DECIMAL},
+      </if>
+      <if test="signalquality != null">
+        #{signalquality,jdbcType=DECIMAL},
+      </if>
+      <if test="targettc0cmAvg != null">
+        #{targettc0cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.PlgGrassAutoStation">
+    update plg_grass_auto_station
+    <set>
+      <if test="collectorid != null">
+        collectorid = #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="battVoltMin != null">
+        batt_volt_min = #{battVoltMin,jdbcType=DECIMAL},
+      </if>
+      <if test="ptemp != null">
+        ptemp = #{ptemp,jdbcType=DECIMAL},
+      </if>
+      <if test="ws10mAvg != null">
+        ws_10m_avg = #{ws10mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ws10m != null">
+        ws_10m = #{ws10m,jdbcType=DECIMAL},
+      </if>
+      <if test="wd != null">
+        wd = #{wd,jdbcType=DECIMAL},
+      </if>
+      <if test="temp10mAvg != null">
+        temp_10m_avg = #{temp10mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="temp2mAvg != null">
+        temp_2m_avg = #{temp2mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rh10mAvg != null">
+        rh_10m_avg = #{rh10mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rh2mAvg != null">
+        rh_2m_avg = #{rh2mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vapor10mAvg != null">
+        vapor_10m_avg = #{vapor10mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vapor2mAvg != null">
+        vapor_2m_avg = #{vapor2mAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="shortWaveDAvg != null">
+        short_wave_d_avg = #{shortWaveDAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="shortWaveUAvg != null">
+        short_wave_u_avg = #{shortWaveUAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="longWaveDAvg != null">
+        long_wave_d_avg = #{longWaveDAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="longWaveUAvg != null">
+        long_wave_u_avg = #{longWaveUAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="netTotAvg != null">
+        net_tot_avg = #{netTotAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="nr01tcAvg != null">
+        nr01tc_avg = #{nr01tcAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="albedoNr01Avg != null">
+        albedo_nr01_avg = #{albedoNr01Avg,jdbcType=DECIMAL},
+      </if>
+      <if test="rainMmTot != null">
+        rain_mm_tot = #{rainMmTot,jdbcType=DECIMAL},
+      </if>
+      <if test="p != null">
+        p = #{p,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc10cm != null">
+        hsoil_tc_10cm = #{hsoilTc10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk10cm != null">
+        hsoil_tk_10cm = #{hsoilTk10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture10cm != null">
+        soil_moisture_10cm = #{soilMoisture10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond10cm != null">
+        soil_cond_10cm = #{soilCond10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt10cm != null">
+        soil_dlt_10cm = #{soilDlt10cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc20cm != null">
+        hsoil_tc_20cm = #{hsoilTc20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk20cm != null">
+        hsoil_tk_20cm = #{hsoilTk20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture20cm != null">
+        soil_moisture_20cm = #{soilMoisture20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond20cm != null">
+        soil_cond_20cm = #{soilCond20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt20cm != null">
+        soil_dlt_20cm = #{soilDlt20cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc30cm != null">
+        hsoil_tc_30cm = #{hsoilTc30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk30cm != null">
+        hsoil_tk_30cm = #{hsoilTk30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture30cm != null">
+        soil_moisture_30cm = #{soilMoisture30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond30cm != null">
+        soil_cond_30cm = #{soilCond30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt30cm != null">
+        soil_dlt_30cm = #{soilDlt30cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc40cm != null">
+        hsoil_tc_40cm = #{hsoilTc40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk40cm != null">
+        hsoil_tk_40cm = #{hsoilTk40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture40cm != null">
+        soil_moisture_40cm = #{soilMoisture40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond40cm != null">
+        soil_cond_40cm = #{soilCond40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt40cm != null">
+        soil_dlt_40cm = #{soilDlt40cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc60cm != null">
+        hsoil_tc_60cm = #{hsoilTc60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk60cm != null">
+        hsoil_tk_60cm = #{hsoilTk60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture60cm != null">
+        soil_moisture_60cm = #{soilMoisture60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond60cm != null">
+        soil_cond_60cm = #{soilCond60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt60cm != null">
+        soil_dlt_60cm = #{soilDlt60cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTc80cm != null">
+        hsoil_tc_80cm = #{hsoilTc80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="hsoilTk80cm != null">
+        hsoil_tk_80cm = #{hsoilTk80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilMoisture80cm != null">
+        soil_moisture_80cm = #{soilMoisture80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilCond80cm != null">
+        soil_cond_80cm = #{soilCond80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilDlt80cm != null">
+        soil_dlt_80cm = #{soilDlt80cm,jdbcType=DECIMAL},
+      </if>
+      <if test="soilGLAvg != null">
+        soil_g_l_avg = #{soilGLAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="soilGRAvg != null">
+        soil_g_r_avg = #{soilGRAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="snowDepth != null">
+        snow_depth = #{snowDepth,jdbcType=DECIMAL},
+      </if>
+      <if test="signalquality != null">
+        signalquality = #{signalquality,jdbcType=DECIMAL},
+      </if>
+      <if test="targettc0cmAvg != null">
+        targettc_0cm_avg = #{targettc0cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.PlgGrassAutoStation">
+    update plg_grass_auto_station
+    set collectorid        = #{collectorid,jdbcType=VARCHAR},
+        create_time        = #{createTime,jdbcType=TIMESTAMP},
+        collect_frequency  = #{collectFrequency,jdbcType=DECIMAL},
+        timestamp          = #{timestamp,jdbcType=TIMESTAMP},
+        record             = #{record,jdbcType=DECIMAL},
+        batt_volt_min      = #{battVoltMin,jdbcType=DECIMAL},
+        ptemp              = #{ptemp,jdbcType=DECIMAL},
+        ws_10m_avg         = #{ws10mAvg,jdbcType=DECIMAL},
+        ws_10m             = #{ws10m,jdbcType=DECIMAL},
+        wd                 = #{wd,jdbcType=DECIMAL},
+        temp_10m_avg       = #{temp10mAvg,jdbcType=DECIMAL},
+        temp_2m_avg        = #{temp2mAvg,jdbcType=DECIMAL},
+        rh_10m_avg         = #{rh10mAvg,jdbcType=DECIMAL},
+        rh_2m_avg          = #{rh2mAvg,jdbcType=DECIMAL},
+        vapor_10m_avg      = #{vapor10mAvg,jdbcType=DECIMAL},
+        vapor_2m_avg       = #{vapor2mAvg,jdbcType=DECIMAL},
+        short_wave_d_avg   = #{shortWaveDAvg,jdbcType=DECIMAL},
+        short_wave_u_avg   = #{shortWaveUAvg,jdbcType=DECIMAL},
+        long_wave_d_avg    = #{longWaveDAvg,jdbcType=DECIMAL},
+        long_wave_u_avg    = #{longWaveUAvg,jdbcType=DECIMAL},
+        net_tot_avg        = #{netTotAvg,jdbcType=DECIMAL},
+        nr01tc_avg         = #{nr01tcAvg,jdbcType=DECIMAL},
+        albedo_nr01_avg    = #{albedoNr01Avg,jdbcType=DECIMAL},
+        rain_mm_tot        = #{rainMmTot,jdbcType=DECIMAL},
+        p                  = #{p,jdbcType=DECIMAL},
+        hsoil_tc_10cm      = #{hsoilTc10cm,jdbcType=DECIMAL},
+        hsoil_tk_10cm      = #{hsoilTk10cm,jdbcType=DECIMAL},
+        soil_moisture_10cm = #{soilMoisture10cm,jdbcType=DECIMAL},
+        soil_cond_10cm     = #{soilCond10cm,jdbcType=DECIMAL},
+        soil_dlt_10cm      = #{soilDlt10cm,jdbcType=DECIMAL},
+        hsoil_tc_20cm      = #{hsoilTc20cm,jdbcType=DECIMAL},
+        hsoil_tk_20cm      = #{hsoilTk20cm,jdbcType=DECIMAL},
+        soil_moisture_20cm = #{soilMoisture20cm,jdbcType=DECIMAL},
+        soil_cond_20cm     = #{soilCond20cm,jdbcType=DECIMAL},
+        soil_dlt_20cm      = #{soilDlt20cm,jdbcType=DECIMAL},
+        hsoil_tc_30cm      = #{hsoilTc30cm,jdbcType=DECIMAL},
+        hsoil_tk_30cm      = #{hsoilTk30cm,jdbcType=DECIMAL},
+        soil_moisture_30cm = #{soilMoisture30cm,jdbcType=DECIMAL},
+        soil_cond_30cm     = #{soilCond30cm,jdbcType=DECIMAL},
+        soil_dlt_30cm      = #{soilDlt30cm,jdbcType=DECIMAL},
+        hsoil_tc_40cm      = #{hsoilTc40cm,jdbcType=DECIMAL},
+        hsoil_tk_40cm      = #{hsoilTk40cm,jdbcType=DECIMAL},
+        soil_moisture_40cm = #{soilMoisture40cm,jdbcType=DECIMAL},
+        soil_cond_40cm     = #{soilCond40cm,jdbcType=DECIMAL},
+        soil_dlt_40cm      = #{soilDlt40cm,jdbcType=DECIMAL},
+        hsoil_tc_60cm      = #{hsoilTc60cm,jdbcType=DECIMAL},
+        hsoil_tk_60cm      = #{hsoilTk60cm,jdbcType=DECIMAL},
+        soil_moisture_60cm = #{soilMoisture60cm,jdbcType=DECIMAL},
+        soil_cond_60cm     = #{soilCond60cm,jdbcType=DECIMAL},
+        soil_dlt_60cm      = #{soilDlt60cm,jdbcType=DECIMAL},
+        hsoil_tc_80cm      = #{hsoilTc80cm,jdbcType=DECIMAL},
+        hsoil_tk_80cm      = #{hsoilTk80cm,jdbcType=DECIMAL},
+        soil_moisture_80cm = #{soilMoisture80cm,jdbcType=DECIMAL},
+        soil_cond_80cm     = #{soilCond80cm,jdbcType=DECIMAL},
+        soil_dlt_80cm      = #{soilDlt80cm,jdbcType=DECIMAL},
+        soil_g_l_avg       = #{soilGLAvg,jdbcType=DECIMAL},
+        soil_g_r_avg       = #{soilGRAvg,jdbcType=DECIMAL},
+        snow_depth         = #{snowDepth,jdbcType=DECIMAL},
+        signalquality      = #{signalquality,jdbcType=DECIMAL},
+        targettc_0cm_avg   = #{targettc0cmAvg,jdbcType=DECIMAL},
+        file_type          = #{fileType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

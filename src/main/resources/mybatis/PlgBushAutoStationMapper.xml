@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.PlgBushAutoStationMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.PlgBushAutoStation">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="collectorid" property="collectorid" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="collect_frequency" property="collectFrequency" jdbcType="DECIMAL"/>
+    <result column="timestamp" property="timestamp" jdbcType="TIMESTAMP"/>
+    <result column="record" property="record" jdbcType="DECIMAL"/>
+    <result column="batt_volt_min" property="battVoltMin" jdbcType="DECIMAL"/>
+    <result column="ptemp" property="ptemp" jdbcType="DECIMAL"/>
+    <result column="w_spd" property="wSpd" jdbcType="DECIMAL"/>
+    <result column="w_dir" property="wDir" jdbcType="DECIMAL"/>
+    <result column="wd_std" property="wdStd" jdbcType="DECIMAL"/>
+    <result column="ta_avg" property="taAvg" jdbcType="DECIMAL"/>
+    <result column="rh_avg" property="rhAvg" jdbcType="DECIMAL"/>
+    <result column="press_avg" property="pressAvg" jdbcType="DECIMAL"/>
+    <result column="rain" property="rain" jdbcType="DECIMAL"/>
+    <result column="vwc10cm_avg" property="vwc10cmAvg" jdbcType="DECIMAL"/>
+    <result column="ec10cm_avg" property="ec10cmAvg" jdbcType="DECIMAL"/>
+    <result column="tsoil10cm_avg" property="tsoil10cmAvg" jdbcType="DECIMAL"/>
+    <result column="vwc20cm_avg" property="vwc20cmAvg" jdbcType="DECIMAL"/>
+    <result column="ec20cm_avg" property="ec20cmAvg" jdbcType="DECIMAL"/>
+    <result column="tsoil20cm_avg" property="tsoil20cmAvg" jdbcType="DECIMAL"/>
+    <result column="vwc30cm_avg" property="vwc30cmAvg" jdbcType="DECIMAL"/>
+    <result column="ec30cm_avg" property="ec30cmAvg" jdbcType="DECIMAL"/>
+    <result column="tsoil30cm_avg" property="tsoil30cmAvg" jdbcType="DECIMAL"/>
+    <result column="vwc40cm_avg" property="vwc40cmAvg" jdbcType="DECIMAL"/>
+    <result column="ec40cm_avg" property="ec40cmAvg" jdbcType="DECIMAL"/>
+    <result column="tsoil40cm_avg" property="tsoil40cmAvg" jdbcType="DECIMAL"/>
+    <result column="vwc60cm_avg" property="vwc60cmAvg" jdbcType="DECIMAL"/>
+    <result column="ec60cm_avg" property="ec60cmAvg" jdbcType="DECIMAL"/>
+    <result column="tsoil60cm_avg" property="tsoil60cmAvg" jdbcType="DECIMAL"/>
+    <result column="file_type" property="fileType" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collectorid, create_time, collect_frequency, timestamp, record, batt_volt_min, 
+    ptemp, w_spd, w_dir, wd_std, ta_avg, rh_avg, press_avg, rain, vwc10cm_avg, ec10cm_avg, 
+    tsoil10cm_avg, vwc20cm_avg, ec20cm_avg, tsoil20cm_avg, vwc30cm_avg, ec30cm_avg, tsoil30cm_avg, 
+    vwc40cm_avg, ec40cm_avg, tsoil40cm_avg, vwc60cm_avg, ec60cm_avg, tsoil60cm_avg, file_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_bush_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectLastest" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_bush_auto_station
+    order by create_time DESC
+    limit 1
+  </select>
+  <select id="selectByTimeRange" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_bush_auto_station
+    where
+    create_time &gt; #{startTime,jdbcType=TIMESTAMP}
+    and create_time &lt; #{endTime,jdbcType=TIMESTAMP}
+    limit 1
+  </select>
+  <select id="listAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_bush_auto_station
+    order by create_time desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete
+    from plg_bush_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.PlgBushAutoStation">
+    insert into plg_bush_auto_station (id, collectorid, create_time,
+                                       collect_frequency, timestamp, record,
+                                       batt_volt_min, ptemp, w_spd,
+                                       w_dir, wd_std, ta_avg,
+                                       rh_avg, press_avg, rain,
+                                       vwc10cm_avg, ec10cm_avg, tsoil10cm_avg,
+                                       vwc20cm_avg, ec20cm_avg, tsoil20cm_avg,
+                                       vwc30cm_avg, ec30cm_avg, tsoil30cm_avg,
+                                       vwc40cm_avg, ec40cm_avg, tsoil40cm_avg,
+                                       vwc60cm_avg, ec60cm_avg, tsoil60cm_avg,
+                                       file_type)
+    values (#{id,jdbcType=VARCHAR}, #{collectorid,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{collectFrequency,jdbcType=DECIMAL}, #{timestamp,jdbcType=TIMESTAMP},
+            #{record,jdbcType=DECIMAL},
+            #{battVoltMin,jdbcType=DECIMAL}, #{ptemp,jdbcType=DECIMAL}, #{wSpd,jdbcType=DECIMAL},
+            #{wDir,jdbcType=DECIMAL}, #{wdStd,jdbcType=DECIMAL}, #{taAvg,jdbcType=DECIMAL},
+            #{rhAvg,jdbcType=DECIMAL}, #{pressAvg,jdbcType=DECIMAL}, #{rain,jdbcType=DECIMAL},
+            #{vwc10cmAvg,jdbcType=DECIMAL}, #{ec10cmAvg,jdbcType=DECIMAL},
+            #{tsoil10cmAvg,jdbcType=DECIMAL},
+            #{vwc20cmAvg,jdbcType=DECIMAL}, #{ec20cmAvg,jdbcType=DECIMAL},
+            #{tsoil20cmAvg,jdbcType=DECIMAL},
+            #{vwc30cmAvg,jdbcType=DECIMAL}, #{ec30cmAvg,jdbcType=DECIMAL},
+            #{tsoil30cmAvg,jdbcType=DECIMAL},
+            #{vwc40cmAvg,jdbcType=DECIMAL}, #{ec40cmAvg,jdbcType=DECIMAL},
+            #{tsoil40cmAvg,jdbcType=DECIMAL},
+            #{vwc60cmAvg,jdbcType=DECIMAL}, #{ec60cmAvg,jdbcType=DECIMAL},
+            #{tsoil60cmAvg,jdbcType=DECIMAL},
+            #{fileType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.PlgBushAutoStation">
+    insert into plg_bush_auto_station
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectorid != null">
+        collectorid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="battVoltMin != null">
+        batt_volt_min,
+      </if>
+      <if test="ptemp != null">
+        ptemp,
+      </if>
+      <if test="wSpd != null">
+        w_spd,
+      </if>
+      <if test="wDir != null">
+        w_dir,
+      </if>
+      <if test="wdStd != null">
+        wd_std,
+      </if>
+      <if test="taAvg != null">
+        ta_avg,
+      </if>
+      <if test="rhAvg != null">
+        rh_avg,
+      </if>
+      <if test="pressAvg != null">
+        press_avg,
+      </if>
+      <if test="rain != null">
+        rain,
+      </if>
+      <if test="vwc10cmAvg != null">
+        vwc10cm_avg,
+      </if>
+      <if test="ec10cmAvg != null">
+        ec10cm_avg,
+      </if>
+      <if test="tsoil10cmAvg != null">
+        tsoil10cm_avg,
+      </if>
+      <if test="vwc20cmAvg != null">
+        vwc20cm_avg,
+      </if>
+      <if test="ec20cmAvg != null">
+        ec20cm_avg,
+      </if>
+      <if test="tsoil20cmAvg != null">
+        tsoil20cm_avg,
+      </if>
+      <if test="vwc30cmAvg != null">
+        vwc30cm_avg,
+      </if>
+      <if test="ec30cmAvg != null">
+        ec30cm_avg,
+      </if>
+      <if test="tsoil30cmAvg != null">
+        tsoil30cm_avg,
+      </if>
+      <if test="vwc40cmAvg != null">
+        vwc40cm_avg,
+      </if>
+      <if test="ec40cmAvg != null">
+        ec40cm_avg,
+      </if>
+      <if test="tsoil40cmAvg != null">
+        tsoil40cm_avg,
+      </if>
+      <if test="vwc60cmAvg != null">
+        vwc60cm_avg,
+      </if>
+      <if test="ec60cmAvg != null">
+        ec60cm_avg,
+      </if>
+      <if test="tsoil60cmAvg != null">
+        tsoil60cm_avg,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorid != null">
+        #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="battVoltMin != null">
+        #{battVoltMin,jdbcType=DECIMAL},
+      </if>
+      <if test="ptemp != null">
+        #{ptemp,jdbcType=DECIMAL},
+      </if>
+      <if test="wSpd != null">
+        #{wSpd,jdbcType=DECIMAL},
+      </if>
+      <if test="wDir != null">
+        #{wDir,jdbcType=DECIMAL},
+      </if>
+      <if test="wdStd != null">
+        #{wdStd,jdbcType=DECIMAL},
+      </if>
+      <if test="taAvg != null">
+        #{taAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rhAvg != null">
+        #{rhAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pressAvg != null">
+        #{pressAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rain != null">
+        #{rain,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc10cmAvg != null">
+        #{vwc10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec10cmAvg != null">
+        #{ec10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil10cmAvg != null">
+        #{tsoil10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc20cmAvg != null">
+        #{vwc20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec20cmAvg != null">
+        #{ec20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil20cmAvg != null">
+        #{tsoil20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc30cmAvg != null">
+        #{vwc30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec30cmAvg != null">
+        #{ec30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil30cmAvg != null">
+        #{tsoil30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc40cmAvg != null">
+        #{vwc40cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec40cmAvg != null">
+        #{ec40cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil40cmAvg != null">
+        #{tsoil40cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc60cmAvg != null">
+        #{vwc60cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec60cmAvg != null">
+        #{ec60cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil60cmAvg != null">
+        #{tsoil60cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.PlgBushAutoStation">
+    update plg_bush_auto_station
+    <set>
+      <if test="collectorid != null">
+        collectorid = #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="battVoltMin != null">
+        batt_volt_min = #{battVoltMin,jdbcType=DECIMAL},
+      </if>
+      <if test="ptemp != null">
+        ptemp = #{ptemp,jdbcType=DECIMAL},
+      </if>
+      <if test="wSpd != null">
+        w_spd = #{wSpd,jdbcType=DECIMAL},
+      </if>
+      <if test="wDir != null">
+        w_dir = #{wDir,jdbcType=DECIMAL},
+      </if>
+      <if test="wdStd != null">
+        wd_std = #{wdStd,jdbcType=DECIMAL},
+      </if>
+      <if test="taAvg != null">
+        ta_avg = #{taAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rhAvg != null">
+        rh_avg = #{rhAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pressAvg != null">
+        press_avg = #{pressAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rain != null">
+        rain = #{rain,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc10cmAvg != null">
+        vwc10cm_avg = #{vwc10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec10cmAvg != null">
+        ec10cm_avg = #{ec10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil10cmAvg != null">
+        tsoil10cm_avg = #{tsoil10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc20cmAvg != null">
+        vwc20cm_avg = #{vwc20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec20cmAvg != null">
+        ec20cm_avg = #{ec20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil20cmAvg != null">
+        tsoil20cm_avg = #{tsoil20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc30cmAvg != null">
+        vwc30cm_avg = #{vwc30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec30cmAvg != null">
+        ec30cm_avg = #{ec30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil30cmAvg != null">
+        tsoil30cm_avg = #{tsoil30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc40cmAvg != null">
+        vwc40cm_avg = #{vwc40cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec40cmAvg != null">
+        ec40cm_avg = #{ec40cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil40cmAvg != null">
+        tsoil40cm_avg = #{tsoil40cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc60cmAvg != null">
+        vwc60cm_avg = #{vwc60cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec60cmAvg != null">
+        ec60cm_avg = #{ec60cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil60cmAvg != null">
+        tsoil60cm_avg = #{tsoil60cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.PlgBushAutoStation">
+    update plg_bush_auto_station
+    set collectorid       = #{collectorid,jdbcType=VARCHAR},
+        create_time       = #{createTime,jdbcType=TIMESTAMP},
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+        timestamp         = #{timestamp,jdbcType=TIMESTAMP},
+        record            = #{record,jdbcType=DECIMAL},
+        batt_volt_min     = #{battVoltMin,jdbcType=DECIMAL},
+        ptemp             = #{ptemp,jdbcType=DECIMAL},
+        w_spd             = #{wSpd,jdbcType=DECIMAL},
+        w_dir             = #{wDir,jdbcType=DECIMAL},
+        wd_std            = #{wdStd,jdbcType=DECIMAL},
+        ta_avg            = #{taAvg,jdbcType=DECIMAL},
+        rh_avg            = #{rhAvg,jdbcType=DECIMAL},
+        press_avg         = #{pressAvg,jdbcType=DECIMAL},
+        rain              = #{rain,jdbcType=DECIMAL},
+        vwc10cm_avg       = #{vwc10cmAvg,jdbcType=DECIMAL},
+        ec10cm_avg        = #{ec10cmAvg,jdbcType=DECIMAL},
+        tsoil10cm_avg     = #{tsoil10cmAvg,jdbcType=DECIMAL},
+        vwc20cm_avg       = #{vwc20cmAvg,jdbcType=DECIMAL},
+        ec20cm_avg        = #{ec20cmAvg,jdbcType=DECIMAL},
+        tsoil20cm_avg     = #{tsoil20cmAvg,jdbcType=DECIMAL},
+        vwc30cm_avg       = #{vwc30cmAvg,jdbcType=DECIMAL},
+        ec30cm_avg        = #{ec30cmAvg,jdbcType=DECIMAL},
+        tsoil30cm_avg     = #{tsoil30cmAvg,jdbcType=DECIMAL},
+        vwc40cm_avg       = #{vwc40cmAvg,jdbcType=DECIMAL},
+        ec40cm_avg        = #{ec40cmAvg,jdbcType=DECIMAL},
+        tsoil40cm_avg     = #{tsoil40cmAvg,jdbcType=DECIMAL},
+        vwc60cm_avg       = #{vwc60cmAvg,jdbcType=DECIMAL},
+        ec60cm_avg        = #{ec60cmAvg,jdbcType=DECIMAL},
+        tsoil60cm_avg     = #{tsoil60cmAvg,jdbcType=DECIMAL},
+        file_type         = #{fileType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

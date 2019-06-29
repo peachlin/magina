@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmsj.magina.dao.PlgPortAutoStationMapper">
+  <resultMap id="BaseResultMap" type="com.zmsj.magina.model.PlgPortAutoStation">
+    <id column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="collectorid" property="collectorid" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="collect_frequency" property="collectFrequency" jdbcType="DECIMAL"/>
+    <result column="timestamp" property="timestamp" jdbcType="TIMESTAMP"/>
+    <result column="record" property="record" jdbcType="DECIMAL"/>
+    <result column="batt_volt" property="battVolt" jdbcType="DECIMAL"/>
+    <result column="ptemp" property="ptemp" jdbcType="DECIMAL"/>
+    <result column="ws" property="ws" jdbcType="DECIMAL"/>
+    <result column="wd" property="wd" jdbcType="DECIMAL"/>
+    <result column="wd_std" property="wdStd" jdbcType="DECIMAL"/>
+    <result column="temp_air_avg" property="tempAirAvg" jdbcType="DECIMAL"/>
+    <result column="rh_air_avg" property="rhAirAvg" jdbcType="DECIMAL"/>
+    <result column="pressure_avg" property="pressureAvg" jdbcType="DECIMAL"/>
+    <result column="dew_point_avg" property="dewPointAvg" jdbcType="DECIMAL"/>
+    <result column="vwc10cm_avg" property="vwc10cmAvg" jdbcType="DECIMAL"/>
+    <result column="ec10cm_avg" property="ec10cmAvg" jdbcType="DECIMAL"/>
+    <result column="tsoil10cm_avg" property="tsoil10cmAvg" jdbcType="DECIMAL"/>
+    <result column="vwc20cm_avg" property="vwc20cmAvg" jdbcType="DECIMAL"/>
+    <result column="ec20cm_avg" property="ec20cmAvg" jdbcType="DECIMAL"/>
+    <result column="tsoil20cm_avg" property="tsoil20cmAvg" jdbcType="DECIMAL"/>
+    <result column="vwc30cm_avg" property="vwc30cmAvg" jdbcType="DECIMAL"/>
+    <result column="ec30cm_avg" property="ec30cmAvg" jdbcType="DECIMAL"/>
+    <result column="tsoil30cm_avg" property="tsoil30cmAvg" jdbcType="DECIMAL"/>
+    <result column="rain_intensity" property="rainIntensity" jdbcType="DECIMAL"/>
+    <result column="rain_tot" property="rainTot" jdbcType="DECIMAL"/>
+    <result column="status_rain" property="statusRain" jdbcType="DECIMAL"/>
+    <result column="file_type" property="fileType" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collectorid, create_time, collect_frequency, timestamp, record, batt_volt, ptemp, 
+    ws, wd, wd_std, temp_air_avg, rh_air_avg, pressure_avg, dew_point_avg, vwc10cm_avg, 
+    ec10cm_avg, tsoil10cm_avg, vwc20cm_avg, ec20cm_avg, tsoil20cm_avg, vwc30cm_avg, ec30cm_avg, 
+    tsoil30cm_avg, rain_intensity, rain_tot, status_rain, file_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_port_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete
+    from plg_port_auto_station
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zmsj.magina.model.PlgPortAutoStation">
+    insert into plg_port_auto_station (id, collectorid, create_time,
+                                       collect_frequency, timestamp, record,
+                                       batt_volt, ptemp, ws,
+                                       wd, wd_std, temp_air_avg,
+                                       rh_air_avg, pressure_avg, dew_point_avg,
+                                       vwc10cm_avg, ec10cm_avg, tsoil10cm_avg,
+                                       vwc20cm_avg, ec20cm_avg, tsoil20cm_avg,
+                                       vwc30cm_avg, ec30cm_avg, tsoil30cm_avg,
+                                       rain_intensity, rain_tot, status_rain,
+                                       file_type)
+    values (#{id,jdbcType=VARCHAR}, #{collectorid,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{collectFrequency,jdbcType=DECIMAL}, #{timestamp,jdbcType=TIMESTAMP},
+            #{record,jdbcType=DECIMAL},
+            #{battVolt,jdbcType=DECIMAL}, #{ptemp,jdbcType=DECIMAL}, #{ws,jdbcType=DECIMAL},
+            #{wd,jdbcType=DECIMAL}, #{wdStd,jdbcType=DECIMAL}, #{tempAirAvg,jdbcType=DECIMAL},
+            #{rhAirAvg,jdbcType=DECIMAL}, #{pressureAvg,jdbcType=DECIMAL},
+            #{dewPointAvg,jdbcType=DECIMAL},
+            #{vwc10cmAvg,jdbcType=DECIMAL}, #{ec10cmAvg,jdbcType=DECIMAL},
+            #{tsoil10cmAvg,jdbcType=DECIMAL},
+            #{vwc20cmAvg,jdbcType=DECIMAL}, #{ec20cmAvg,jdbcType=DECIMAL},
+            #{tsoil20cmAvg,jdbcType=DECIMAL},
+            #{vwc30cmAvg,jdbcType=DECIMAL}, #{ec30cmAvg,jdbcType=DECIMAL},
+            #{tsoil30cmAvg,jdbcType=DECIMAL},
+            #{rainIntensity,jdbcType=DECIMAL}, #{rainTot,jdbcType=DECIMAL},
+            #{statusRain,jdbcType=DECIMAL},
+            #{fileType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmsj.magina.model.PlgPortAutoStation">
+    insert into plg_port_auto_station
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectorid != null">
+        collectorid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="battVolt != null">
+        batt_volt,
+      </if>
+      <if test="ptemp != null">
+        ptemp,
+      </if>
+      <if test="ws != null">
+        ws,
+      </if>
+      <if test="wd != null">
+        wd,
+      </if>
+      <if test="wdStd != null">
+        wd_std,
+      </if>
+      <if test="tempAirAvg != null">
+        temp_air_avg,
+      </if>
+      <if test="rhAirAvg != null">
+        rh_air_avg,
+      </if>
+      <if test="pressureAvg != null">
+        pressure_avg,
+      </if>
+      <if test="dewPointAvg != null">
+        dew_point_avg,
+      </if>
+      <if test="vwc10cmAvg != null">
+        vwc10cm_avg,
+      </if>
+      <if test="ec10cmAvg != null">
+        ec10cm_avg,
+      </if>
+      <if test="tsoil10cmAvg != null">
+        tsoil10cm_avg,
+      </if>
+      <if test="vwc20cmAvg != null">
+        vwc20cm_avg,
+      </if>
+      <if test="ec20cmAvg != null">
+        ec20cm_avg,
+      </if>
+      <if test="tsoil20cmAvg != null">
+        tsoil20cm_avg,
+      </if>
+      <if test="vwc30cmAvg != null">
+        vwc30cm_avg,
+      </if>
+      <if test="ec30cmAvg != null">
+        ec30cm_avg,
+      </if>
+      <if test="tsoil30cmAvg != null">
+        tsoil30cm_avg,
+      </if>
+      <if test="rainIntensity != null">
+        rain_intensity,
+      </if>
+      <if test="rainTot != null">
+        rain_tot,
+      </if>
+      <if test="statusRain != null">
+        status_rain,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="collectorid != null">
+        #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="battVolt != null">
+        #{battVolt,jdbcType=DECIMAL},
+      </if>
+      <if test="ptemp != null">
+        #{ptemp,jdbcType=DECIMAL},
+      </if>
+      <if test="ws != null">
+        #{ws,jdbcType=DECIMAL},
+      </if>
+      <if test="wd != null">
+        #{wd,jdbcType=DECIMAL},
+      </if>
+      <if test="wdStd != null">
+        #{wdStd,jdbcType=DECIMAL},
+      </if>
+      <if test="tempAirAvg != null">
+        #{tempAirAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rhAirAvg != null">
+        #{rhAirAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pressureAvg != null">
+        #{pressureAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="dewPointAvg != null">
+        #{dewPointAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc10cmAvg != null">
+        #{vwc10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec10cmAvg != null">
+        #{ec10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil10cmAvg != null">
+        #{tsoil10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc20cmAvg != null">
+        #{vwc20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec20cmAvg != null">
+        #{ec20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil20cmAvg != null">
+        #{tsoil20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc30cmAvg != null">
+        #{vwc30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec30cmAvg != null">
+        #{ec30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil30cmAvg != null">
+        #{tsoil30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rainIntensity != null">
+        #{rainIntensity,jdbcType=DECIMAL},
+      </if>
+      <if test="rainTot != null">
+        #{rainTot,jdbcType=DECIMAL},
+      </if>
+      <if test="statusRain != null">
+        #{statusRain,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmsj.magina.model.PlgPortAutoStation">
+    update plg_port_auto_station
+    <set>
+      <if test="collectorid != null">
+        collectorid = #{collectorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectFrequency != null">
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=DECIMAL},
+      </if>
+      <if test="battVolt != null">
+        batt_volt = #{battVolt,jdbcType=DECIMAL},
+      </if>
+      <if test="ptemp != null">
+        ptemp = #{ptemp,jdbcType=DECIMAL},
+      </if>
+      <if test="ws != null">
+        ws = #{ws,jdbcType=DECIMAL},
+      </if>
+      <if test="wd != null">
+        wd = #{wd,jdbcType=DECIMAL},
+      </if>
+      <if test="wdStd != null">
+        wd_std = #{wdStd,jdbcType=DECIMAL},
+      </if>
+      <if test="tempAirAvg != null">
+        temp_air_avg = #{tempAirAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rhAirAvg != null">
+        rh_air_avg = #{rhAirAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="pressureAvg != null">
+        pressure_avg = #{pressureAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="dewPointAvg != null">
+        dew_point_avg = #{dewPointAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc10cmAvg != null">
+        vwc10cm_avg = #{vwc10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec10cmAvg != null">
+        ec10cm_avg = #{ec10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil10cmAvg != null">
+        tsoil10cm_avg = #{tsoil10cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc20cmAvg != null">
+        vwc20cm_avg = #{vwc20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec20cmAvg != null">
+        ec20cm_avg = #{ec20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil20cmAvg != null">
+        tsoil20cm_avg = #{tsoil20cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="vwc30cmAvg != null">
+        vwc30cm_avg = #{vwc30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="ec30cmAvg != null">
+        ec30cm_avg = #{ec30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="tsoil30cmAvg != null">
+        tsoil30cm_avg = #{tsoil30cmAvg,jdbcType=DECIMAL},
+      </if>
+      <if test="rainIntensity != null">
+        rain_intensity = #{rainIntensity,jdbcType=DECIMAL},
+      </if>
+      <if test="rainTot != null">
+        rain_tot = #{rainTot,jdbcType=DECIMAL},
+      </if>
+      <if test="statusRain != null">
+        status_rain = #{statusRain,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmsj.magina.model.PlgPortAutoStation">
+    update plg_port_auto_station
+    set collectorid       = #{collectorid,jdbcType=VARCHAR},
+        create_time       = #{createTime,jdbcType=TIMESTAMP},
+        collect_frequency = #{collectFrequency,jdbcType=DECIMAL},
+        timestamp         = #{timestamp,jdbcType=TIMESTAMP},
+        record            = #{record,jdbcType=DECIMAL},
+        batt_volt         = #{battVolt,jdbcType=DECIMAL},
+        ptemp             = #{ptemp,jdbcType=DECIMAL},
+        ws                = #{ws,jdbcType=DECIMAL},
+        wd                = #{wd,jdbcType=DECIMAL},
+        wd_std            = #{wdStd,jdbcType=DECIMAL},
+        temp_air_avg      = #{tempAirAvg,jdbcType=DECIMAL},
+        rh_air_avg        = #{rhAirAvg,jdbcType=DECIMAL},
+        pressure_avg      = #{pressureAvg,jdbcType=DECIMAL},
+        dew_point_avg     = #{dewPointAvg,jdbcType=DECIMAL},
+        vwc10cm_avg       = #{vwc10cmAvg,jdbcType=DECIMAL},
+        ec10cm_avg        = #{ec10cmAvg,jdbcType=DECIMAL},
+        tsoil10cm_avg     = #{tsoil10cmAvg,jdbcType=DECIMAL},
+        vwc20cm_avg       = #{vwc20cmAvg,jdbcType=DECIMAL},
+        ec20cm_avg        = #{ec20cmAvg,jdbcType=DECIMAL},
+        tsoil20cm_avg     = #{tsoil20cmAvg,jdbcType=DECIMAL},
+        vwc30cm_avg       = #{vwc30cmAvg,jdbcType=DECIMAL},
+        ec30cm_avg        = #{ec30cmAvg,jdbcType=DECIMAL},
+        tsoil30cm_avg     = #{tsoil30cmAvg,jdbcType=DECIMAL},
+        rain_intensity    = #{rainIntensity,jdbcType=DECIMAL},
+        rain_tot          = #{rainTot,jdbcType=DECIMAL},
+        status_rain       = #{statusRain,jdbcType=DECIMAL},
+        file_type         = #{fileType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
