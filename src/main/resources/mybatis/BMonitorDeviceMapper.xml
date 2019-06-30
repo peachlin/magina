@@ -9,7 +9,7 @@
     <result column="monitoring_station_id" property="monitoringStationId" jdbcType="INTEGER"/>
     <result column="longitude" property="longitude" jdbcType="DOUBLE"/>
     <result column="latitude" property="latitude" jdbcType="DOUBLE"/>
-    <result column="status" property="status" jdbcType="CHAR"/>
+    <result column="status" property="status" jdbcType="VARCHAR"/>
     <result column="manufacturer" property="manufacturer" jdbcType="VARCHAR"/>
     <result column="manufacturer_charge_name" property="manufacturerChargeName" jdbcType="VARCHAR"/>
     <result column="manufacturer_charge_contact" property="manufacturerChargeContact"
@@ -26,6 +26,7 @@
     <result column="carmera_password" property="carmeraPassword" jdbcType="VARCHAR"/>
     <result column="icon_name" property="iconName" jdbcType="VARCHAR"/>
     <result column="icon_url" property="iconUrl" jdbcType="VARCHAR"/>
+    <result column="location" property="location" jdbcType="VARCHAR"/>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.zmsj.magina.model.BMonitorDevice"
     extends="BaseResultMap">
@@ -35,7 +36,7 @@
     id, device_name, device_code, monitoring_station_id, longitude, latitude, status, 
     manufacturer, manufacturer_charge_name, manufacturer_charge_contact, frequency, create_time, 
     create_user, update_time, update_user, is_camera, camera_ip, carmera_prot, carmera_name, 
-    carmera_password, icon_name, icon_url
+    carmera_password, icon_name, icon_url,location
   </sql>
   <sql id="Blob_Column_List">
     remark

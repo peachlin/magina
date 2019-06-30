@@ -42,7 +42,7 @@
     from b_monitoring_station
     where area_id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="listAll" resultType="com.zmsj.magina.model.BMonitoringStation">
+  <select id="listAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     ,

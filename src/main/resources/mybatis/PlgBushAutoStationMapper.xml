@@ -69,6 +69,20 @@
     from plg_bush_auto_station
     order by create_time desc
   </select>
+  <select id="listByDateAndFrequency" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from plg_bush_auto_station
+    <where>
+      <if test="data !=null">
+        and DATE_FORMAT(create_time,'%Y-%m-%d') = #{data}
+      </if>
+      <if test="frequency !=null">
+        and collect_frequency = #{frequency}
+      </if>
+    </where>
+    order by create_time desc
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete
     from plg_bush_auto_station

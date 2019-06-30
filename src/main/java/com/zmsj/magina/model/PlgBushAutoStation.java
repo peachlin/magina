@@ -3,6 +3,7 @@ package com.zmsj.magina.model;
 import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class PlgBushAutoStation {
@@ -11,6 +12,7 @@ public class PlgBushAutoStation {
 
   private String collectorid;
 
+  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
   private Date createTime;
 
   private BigDecimal collectFrequency;

@@ -23,4 +23,6 @@ public interface PlgBushAutoStationMapper {
   PlgBushAutoStation selectByTimeRange(Date startTime, Date endTime);
 
   List<PlgBushAutoStation> listAll();
+
+  List<PlgBushAutoStation> listByDateAndFrequency(String data, Integer frequency);
 }

@@ -9,8 +9,11 @@ import com.zmsj.magina.service.CollectorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,9 +61,23 @@ public class CollectorController {
   @GetMapping("/detail/{collectorId}")
   public Response<PageInfo<PlgBushAutoStation>> listCollectDetail(
       @PathVariable(value = "collectorId") @ApiParam("采集器ID") Integer collectorId,
+      @RequestParam(value = "data", required = false) @ApiParam("日期,2019-06-29格式") @DateTimeFormat(pattern = "yyyy-MM-dd") Date data,
+      @RequestParam(value = "frequency", required = false) @ApiParam("频率,一分钟-1，十分钟-10，一小时-60，一天-1440") Integer frequency,
       @RequestParam(value = "pageNum", defaultValue = "1") @ApiParam("当前页码") Integer pageNum,
       @RequestParam(value = "pageSize", defaultValue = "10") @ApiParam("分页大小") Integer pageSize) {
 
-    return Response.success(collectorService.listCollectDetail(collectorId, pageNum, pageSize));
+    return Response
+        .success(collectorService.listCollectDetail(collectorId, data, frequency, pageNum, pageSize));
+  }
+
+  @ApiOperation(value = "根据条件导出某个采集器详细采集数据EXCEL")
+  @GetMapping("/export/{collectorId}")
+  public Response<Boolean> exportCollectDetail(
+      @PathVariable(value = "collectorId") @ApiParam("采集器ID") Integer collectorId,
+      @RequestParam(value = "data", required = false) @ApiParam("日期") @DateTimeFormat(pattern = "yyyy-MM-dd") Date data,
+      @RequestParam(value = "frequency", required = false) @ApiParam("频率") Integer frequency,
+      HttpServletResponse response) {
+
+    return Response.success(collectorService.exportCollectDetail(collectorId, data, frequency, response));
   }
 }

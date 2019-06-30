@@ -11,8 +11,8 @@ import lombok.Getter;
 public enum CollectorDataEnum {
 
 
-  id("id", "ID"),
-  collectorid("collectorid", "采集器ID"),
+//  id("id", "ID"),
+//  collectorid("collectorid", "采集器ID"),
   createTime("createTime", "创建时间"),
   collectFrequency("collectFrequency", "采集频率"),
   timestamp("timestamp", "时间"),
